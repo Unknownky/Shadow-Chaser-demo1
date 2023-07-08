@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a040703fb7cb9d49bf030a92f25cd92, type: 3}
+  m_Name: Umbrella
+  m_EditorClassIdentifier: 
+  container: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
+  Name: Umbrella
+  StateDescription: "\u8FD9\u662F\u96E8\u4F1E\u5F62\u6001\uFF0C\u80FD\u591F\u5728\u6253\u5F00\u65F6\u4E58\u4E0A\u5347\u6C14\u6D41\u5411\u4E0A(\u63CF\u8FF0\u6709\u5F85\u66F4\u6539)"
+  StateID: 1

@@ -1,0 +1,157 @@
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    [Header("PlayerComponent")]
+    [SerializeField] private Animator _animator;
+    [SerializeField] private Rigidbody2D playerBody2D;
+
+    [Header("Ground Detected")]
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float DetectRadius;
+
+    [Header("PlayerAttributes")]
+    [SerializeField] private float speed;
+    [SerializeField] private float jumpPower;
+    [SerializeField] private float backGroundScale;
+    [SerializeField] private float jumpDecrease;
+    [SerializeField] private float commonGravityScale = 2f;
+    [SerializeField] private float fallingGravityScale = 4f;
+
+
+    [Header("StateComponent")]
+
+    //public 
+
+
+
+    private PlayerController instance;
+    private float horizontal;
+    private bool isFacingRight;
+    public float IdleTime;
+    public float StretchingTime = 5f;
+    public float LickingTime = 15f;
+    public float Sleep1Time = 23f;
+    private bool playLip1 = true;
+    private bool playLip2 = true;
+    private bool playLip3 = true;
+    private bool isIdle = true;
+    private bool canRecord;
+
+    private void Awake()//单例模式
+    {
+        if(instance!=null)
+            Destroy(this);
+        instance = this;
+        IdleTime = 0f;
+        isFacingRight = true;
+    }
+
+    private void Update()
+    {
+        Movement();
+        Flip();
+    }
+
+    private void Movement()
+    {
+        horizontal = Input.GetAxisRaw("Horizontal");
+        if (Input.GetButtonDown("Jump") && isOnGrounded())
+        {
+            playerBody2D.velocity = new Vector2(playerBody2D.velocity.x, jumpPower * backGroundScale);
+        }
+        if (Input.GetButtonUp("Jump") && playerBody2D.velocity.y > 0f)
+        {
+            playerBody2D.velocity = new Vector2(playerBody2D.velocity.x, playerBody2D.velocity.y * jumpDecrease);
+        }
+    }
+
+    private void Flip()
+    {
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
+    }
+    private bool isOnGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, DetectRadius, groundLayer);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(groundCheck.position, DetectRadius);
+    }
+
+    private void AnimatorUpdate()
+    {
+        if (IdleTime >= StretchingTime && playLip1)
+        {
+            _animator.Play("Stretching");
+            playLip1 = false;
+        }
+
+        if (IdleTime >= LickingTime && playLip2)
+        {
+            _animator.Play("Licking");
+            playLip2 = false;
+        }
+
+        if (IdleTime >= Sleep1Time && playLip3)
+        {
+            _animator.Play("Sleep1");
+            playLip3 = false;
+        }
+
+        _animator.SetBool("isOnGround", isOnGrounded());
+        _animator.SetFloat("Speed", Mathf.Abs(playerBody2D.velocity.x));
+        _animator.SetFloat("Yspeed", Mathf.Abs(playerBody2D.velocity.y));
+        _animator.SetFloat("IdleTime", IdleTime);
+        _animator.SetBool("isIdle", isIdle);
+    }
+
+    private void FixedUpdate()
+    {
+        //时间更新
+        if ( playerBody2D.velocity == Vector2.zero)
+        {
+            isIdle = true;
+            IdleTime += Time.fixedDeltaTime;
+        }
+        else//移动的话更新bool值
+        {
+            playLip1 = true;
+            playLip2 = true;
+            playLip3 = true;
+            isIdle = false;
+            IdleTime = 0f;
+        }
+
+        //动画更新
+        AnimatorUpdate();
+
+        //物理更新
+        if (playerBody2D.velocity.y <= 0f)
+            playerBody2D.gravityScale = fallingGravityScale;
+        else
+            playerBody2D.gravityScale = commonGravityScale;
+        playerBody2D.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
+
+        
+        if (isOnGrounded() && canRecord)
+        {
+            playerBody2D.transform.position = new Vector3(playerBody2D.transform.position.x, playerBody2D.transform.position.y - DetectRadius / 2f, 1);
+            canRecord = false;
+        }
+        if (!isOnGrounded())
+        {
+            canRecord = true;
+        }
+    }
+}
