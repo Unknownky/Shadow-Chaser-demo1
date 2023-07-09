@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [Header("PlayerAttributes")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
-    [SerializeField] private float backGroundScale;
+    [SerializeField] private float backGroundScale; //添加该尺寸用于之后的屏幕适配，以及速度的调整
     [SerializeField] private float jumpDecrease;
     [SerializeField] private float commonGravityScale = 2f;
     [SerializeField] private float fallingGravityScale = 4f;

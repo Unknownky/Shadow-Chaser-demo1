@@ -155,7 +155,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &6852436187254951807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +168,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2cad451099f2214faf3f03c6e143cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 6852436187254951801}
+  playerBody2D: {fileID: 6852436187254951800}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheck: {fileID: 6852436187472874308}
+  DetectRadius: 0.1
+  statesContainer: {fileID: 0}
+  force: 2
+  speed: 3
+  backGroundScale: 4.44
 --- !u!95 &6852436187254951801
 Animator:
   serializedVersion: 4
