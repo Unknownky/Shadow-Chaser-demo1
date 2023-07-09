@@ -175,7 +175,7 @@ MonoBehaviour:
     m_Bits: 64
   groundCheck: {fileID: 6852436187472874308}
   DetectRadius: 0.1
-  statesContainer: {fileID: 0}
+  statesContainer: {fileID: 895929039764890312, guid: 990969b0e3fd23b40871660b1c82c7e0, type: 3}
   force: 2
   speed: 3
   backGroundScale: 4.44

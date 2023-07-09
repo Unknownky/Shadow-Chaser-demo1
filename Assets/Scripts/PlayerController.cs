@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
         //if(instance!=null)
         //    Destroy(this);
         //instance = this;
+        GameObject Canvas = GameObject.Find("Canvas");
+        statesContainer = Canvas.transform.GetChild(0).gameObject;
         IdleTime = 0f;
         isFacingRight = true;
     }

@@ -8,6 +8,7 @@ TagManager:
   - Cat
   - Umbralla
   - Bird
+  - Container
   layers:
   - Default
   - TransparentFX

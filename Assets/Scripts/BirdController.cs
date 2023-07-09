@@ -67,6 +67,11 @@ public class BirdController : MonoBehaviour, IStates
             statesContainer.SetActive(false);
     }
 
+    private void OnEnable()
+    {
+        GameObject Canvas = GameObject.Find("Canvas");
+        statesContainer = Canvas.transform.GetChild(0).gameObject;
+    }
     private void Update()
     {
         Movement();

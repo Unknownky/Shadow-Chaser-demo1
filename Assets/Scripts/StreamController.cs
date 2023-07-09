@@ -6,11 +6,11 @@ public class StreamController : MonoBehaviour
 {
     public float StreamForce;
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Umbralla"))
         {
-            collision.rigidbody.velocity = new Vector2(collision.rigidbody.velocity.x, StreamForce);
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, StreamForce, 0);
         }
     }
 }

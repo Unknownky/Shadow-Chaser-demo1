@@ -5,4 +5,5 @@ using UnityEngine;
 public class StateContainer : ScriptableObject
 {
     public List<State> states = new List<State>();
+    public int CurrentState;
 }
