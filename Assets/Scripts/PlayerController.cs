@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using System.Data;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -19,15 +19,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpDecrease;
     [SerializeField] private float commonGravityScale = 2f;
     [SerializeField] private float fallingGravityScale = 4f;
+    [SerializeField] private float rushAccelerate = 2.3f;
 
 
     [Header("StateComponent")]
-
-    //public 
-
+    [SerializeField] private GameObject statesContainer;
 
 
-    private PlayerController instance;
+
+    //static PlayerController instance;
     private float horizontal;
     private bool isFacingRight;
     public float IdleTime;
@@ -42,17 +42,27 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()//单例模式
     {
-        if(instance!=null)
-            Destroy(this);
-        instance = this;
+        //if(instance!=null)
+        //    Destroy(this);
+        //instance = this;
         IdleTime = 0f;
         isFacingRight = true;
     }
 
     private void Update()
     {
-        Movement();
-        Flip();
+        StatesChange();
+        Movement();//调整移动
+        Flip();//翻转脸
+    }
+
+    private void StatesChange()
+    {
+        bool key = Input.GetKey(KeyCode.Tab);
+        if (key)
+            statesContainer.SetActive(true);
+        else
+            statesContainer.SetActive(false);
     }
 
     private void Movement()
@@ -65,6 +75,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonUp("Jump") && playerBody2D.velocity.y > 0f)
         {
             playerBody2D.velocity = new Vector2(playerBody2D.velocity.x, playerBody2D.velocity.y * jumpDecrease);
+        }
+        if (Input.GetButton("Fire3") && isOnGrounded() && playerBody2D.velocity.x != 0f)
+        {
+            horizontal *= rushAccelerate;
         }
     }
 

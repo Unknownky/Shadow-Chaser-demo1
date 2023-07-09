@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
   Name: Cat
+  StateSprite: {fileID: 29325209, guid: c8f0e7e1d76fe1c409039ade1ac6c99c, type: 3}
   StateDescription: "\u8FD9\u662F\u5728\u5149\u7167\u4E0B\u666E\u901A\u7684\u732B\u5F62\u6001(\u63CF\u8FF0\u6709\u5F85\u66F4\u6539)"
   StateID: 0
+  StatePrefab: {fileID: 4515365880538910596, guid: b149f5c544e94a94c85ede78a3d17530, type: 3}
