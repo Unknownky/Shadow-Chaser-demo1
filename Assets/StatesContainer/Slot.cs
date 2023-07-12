@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ×´Ì¬µã»÷½Å±¾
+/// </summary>
 public class Slot : MonoBehaviour//Õâ¸ö½Å±¾ÓÃÓÚ±£´æ¸Ã²ÛÎ»µÄĞÅÏ¢£¬±ãÓÚ¼ÇÂ¼ÒÔ¼°´«µİ¸øStateContainerController
 {
     public State SlotState;
@@ -11,6 +14,6 @@ public class Slot : MonoBehaviour//Õâ¸ö½Å±¾ÓÃÓÚ±£´æ¸Ã²ÛÎ»µÄĞÅÏ¢£¬±ãÓÚ¼ÇÂ¼ÒÔ¼°´«µ
     {
         StatesContainerController.ShowDescription(SlotState);
         StatesContainerController.currentState = SlotState.StateID;
-        _StatesContainer.CurrentState = SlotState.StateID;
+        _StatesContainer.currentState = SlotState.StateID;
     }
 }

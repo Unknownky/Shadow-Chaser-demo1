@@ -1,10 +1,12 @@
 using UnityEngine;
 
+/// <summary>
+/// 用于状态的获取
+/// </summary>
 public class StateForCat : MonoBehaviour
 {
     public State thisState;
     public StateContainer CatContainer;
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

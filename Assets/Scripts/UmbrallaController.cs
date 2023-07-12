@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// øÿ÷∆”Í…°–ŒÃ¨
+/// </summary>
 public class UmbrallaController : MonoBehaviour, IStates
 {
     [Header("PlayerComponent")]

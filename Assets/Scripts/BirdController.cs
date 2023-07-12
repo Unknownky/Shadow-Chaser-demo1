@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
+/// <summary>
+/// ¿ØÖÆÄñÐÎÌ¬
+/// </summary>
 public class BirdController : MonoBehaviour, IStates
 {
     [Header("PlayerComponent")]

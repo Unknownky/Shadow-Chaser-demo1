@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 挂载在Pannel上用于控制UI
+/// </summary>
 public class StatesContainerController : MonoBehaviour
 {
     public StateContainer StateContainer;

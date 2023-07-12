@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 控制上升气流
+/// </summary>
 public class StreamController : MonoBehaviour
 {
     public float StreamForce;

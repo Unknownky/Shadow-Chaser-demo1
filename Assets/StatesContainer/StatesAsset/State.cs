@@ -2,6 +2,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// ×´Ì¬±£´æScriptableObject½Å±¾
+/// </summary>
+
 [CreateAssetMenu(fileName = "State", menuName = "StateContainer/New State", order = 0)]
 public class State : ScriptableObject
 {

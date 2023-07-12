@@ -16,4 +16,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 26889207b3b72bf4ea8bcdb70f9696c3, type: 2}
   - {fileID: 11400000, guid: 7aa081106906b1a45839f429d2f4e4f4, type: 2}
   - {fileID: 11400000, guid: 1f508566b8c93824c8967a36ad2047ae, type: 2}
-  CurrentState: 1
+  currentState: 0
+  defaultOutChangeStates: 1
+  defaultState: 0

@@ -1,6 +1,10 @@
 using System.Data;
 using UnityEngine;
 
+/// <summary>
+/// ¿ØÖÆÃ¨ÐÎÌ¬
+/// </summary>
+
 public class PlayerController : MonoBehaviour
 {
     [Header("PlayerComponent")]
