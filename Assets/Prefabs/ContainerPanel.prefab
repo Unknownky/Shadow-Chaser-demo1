@@ -146,7 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9e80008b056f24eb8a16eeb862ed61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotState: {fileID: 0}
+  stateOnThisSlot: {fileID: 0}
+  statesContainer: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
 --- !u!1 &895929037761367461
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9e80008b056f24eb8a16eeb862ed61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotState: {fileID: 0}
+  stateOnThisSlot: {fileID: 0}
+  statesContainer: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
 --- !u!1 &895929037905875528
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,7 +522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9e80008b056f24eb8a16eeb862ed61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotState: {fileID: 0}
+  stateOnThisSlot: {fileID: 0}
+  statesContainer: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
 --- !u!1 &895929038202287132
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +670,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9e80008b056f24eb8a16eeb862ed61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotState: {fileID: 0}
+  stateOnThisSlot: {fileID: 0}
+  statesContainer: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
 --- !u!1 &895929038311301928
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,10 +791,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b79ffefd86caedf4ebcb1f5e07b38779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateContainer: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
-  StatesGrid: {fileID: 895929038311301928}
-  DescriptionText: {fileID: 895929037905875534}
-  ImagePrefab: {fileID: 7529945755217141475, guid: a6ed4e4f114124d49952098dce4d005a, type: 3}
+  statesContainer: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
+  playerContainer: {fileID: 895929038311301928}
+  stateDescriptionText: {fileID: 895929037905875534}
+  defaultImagePrefab: {fileID: 7529945755217141475, guid: a6ed4e4f114124d49952098dce4d005a, type: 3}
 --- !u!1 &895929038466917546
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,7 +941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce9e80008b056f24eb8a16eeb862ed61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotState: {fileID: 0}
+  stateOnThisSlot: {fileID: 0}
+  statesContainer: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
 --- !u!1 &895929039764890312
 GameObject:
   m_ObjectHideFlags: 0

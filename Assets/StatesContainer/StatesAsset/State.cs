@@ -6,14 +6,14 @@ using UnityEngine.UI;
 /// ×´Ì¬±£´æScriptableObject½Å±¾
 /// </summary>
 
-[CreateAssetMenu(fileName = "State", menuName = "StateContainer/New State", order = 0)]
+[CreateAssetMenu(fileName = "State", menuName = "StatesContainer/New State", order = 0)]
 public class State : ScriptableObject
 {
-    public StateContainer container;
-    public string Name;
-    public Sprite StateSprite;
+    public StatesContainer statesContainer;
+    public string stateName;
+    public Sprite stateSprite;
     [TextArea]
-    public string StateDescription;
-    public int StateID;
-    public GameObject StatePrefab;
+    public string stateDescription;
+    public int stateID;
+    public GameObject statePrefab;
 }

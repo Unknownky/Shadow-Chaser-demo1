@@ -7,13 +7,12 @@ using UnityEngine;
 /// </summary>
 public class Slot : MonoBehaviour//这个脚本用于保存该槽位的信息，便于记录以及传递给StateContainerController
 {
-    public State SlotState;
-    public StateContainer _StatesContainer;
+    public State stateOnThisSlot;
+    public StatesContainer statesContainer;
 
     public void SlotOnClicked()
     {
-        StatesContainerController.ShowDescription(SlotState);
-        StatesContainerController.currentState = SlotState.StateID;
-        _StatesContainer.currentState = SlotState.StateID;
+        StatesContainerController.ShowDescription(stateOnThisSlot);
+        statesContainer.outWillChangeStateID = stateOnThisSlot.stateID;
     }
 }

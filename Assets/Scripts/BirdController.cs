@@ -6,7 +6,7 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 /// <summary>
 /// ¿ØÖÆÄñÐÎÌ¬
 /// </summary>
-public class BirdController : MonoBehaviour, IStates
+public class BirdController : MonoBehaviour, IStateController
 {
     [Header("PlayerComponent")]
     [SerializeField] private Animator _animator;
@@ -29,9 +29,16 @@ public class BirdController : MonoBehaviour, IStates
     private float horizontal;
     private bool isFacingRight;
 
-    public void AnimatorUpdate()
+
+    public void InitParameters()
     {
-        return;
+        throw new System.NotImplementedException();
+    }
+
+    private void Update()
+    {
+        Movement();
+        Flip();
     }
 
     public void Flip()
@@ -75,12 +82,17 @@ public class BirdController : MonoBehaviour, IStates
         GameObject Canvas = GameObject.Find("Canvas");
         statesContainer = Canvas.transform.GetChild(0).gameObject;
     }
-    private void Update()
-    {
-        Movement();
-    }
 
     private void FixedUpdate()
+    {
+        PhysicalUpdate();
+    }
+    public void AnimatorUpdate()
+    {
+        return;
+    }
+
+    public void PhysicalUpdate()
     {
         playerBody2D.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
     }

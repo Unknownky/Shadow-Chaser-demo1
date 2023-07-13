@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a040703fb7cb9d49bf030a92f25cd92, type: 3}
   m_Name: Umbralla
   m_EditorClassIdentifier: 
-  container: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
-  Name: Umbralla
-  StateSprite: {fileID: 21300000, guid: d3b2af85fc5f77648bd6b73253e25262, type: 3}
-  StateDescription: "\u8FD9\u662F\u96E8\u4F1E\u5F62\u6001\uFF0C\u80FD\u591F\u5728\u6253\u5F00\u65F6\u4E58\u4E0A\u5347\u6C14\u6D41\u5411\u4E0A(\u63CF\u8FF0\u6709\u5F85\u66F4\u6539)"
-  StateID: 1
-  StatePrefab: {fileID: 672902715071357231, guid: 90e791845078dc24394d7277ef45274f, type: 3}
+  statesContainer: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
+  stateName: Umbralla
+  stateSprite: {fileID: 21300000, guid: d3b2af85fc5f77648bd6b73253e25262, type: 3}
+  stateDescription: "\u8FD9\u662F\u96E8\u4F1E\u5F62\u6001\uFF0C\u80FD\u591F\u5728\u6253\u5F00\u65F6\u4E58\u4E0A\u5347\u6C14\u6D41\u5411\u4E0A(\u63CF\u8FF0\u6709\u5F85\u66F4\u6539)"
+  stateID: 1
+  statePrefab: {fileID: 672902715071357231, guid: 90e791845078dc24394d7277ef45274f, type: 3}

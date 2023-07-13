@@ -6,10 +6,10 @@ using UnityEngine.UI;
 /// </summary>
 public class StatesContainerController : MonoBehaviour
 {
-    public StateContainer StateContainer;
-    public GameObject StatesGrid;
-    public Text DescriptionText;
-    public Image ImagePrefab;
+    public StatesContainer statesContainer;
+    public GameObject playerContainer;
+    public Text stateDescriptionText;
+    public Image defaultImagePrefab;
 
     static StatesContainerController instance;
     public static int currentState; //由状态控制脚本保存当前的状态，便于出强光区域时，对应的脚本获取状态值进行脚本的控制和图像的切换
@@ -21,28 +21,39 @@ public class StatesContainerController : MonoBehaviour
             Destroy(instance);
         instance = this;
 
-        foreach (var state in instance.StateContainer.states)
+        InstantiateStateOnSlot();
+
+        ClearTextOnShow();
+    }
+
+    void InstantiateStateOnSlot()
+    {
+        foreach (var state in instance.statesContainer.possessedStates)
         {
-            Image stateImage = Instantiate(instance.ImagePrefab, instance.StatesGrid.transform.GetChild(state.StateID).position, Quaternion.identity);
-            stateImage.gameObject.transform.SetParent(instance.StatesGrid.transform.GetChild(state.StateID).gameObject.transform);
-            Slot slot = instance.StatesGrid.transform.GetChild(state.StateID).gameObject.GetComponent<Slot>();//获得对应的slot槽位
-            slot.SlotState = state;
-            stateImage.sprite = state.StateSprite;
+            Image stateImage = Instantiate(instance.defaultImagePrefab, instance.playerContainer.transform.GetChild(state.stateID).position, Quaternion.identity);
+            stateImage.gameObject.transform.SetParent(instance.playerContainer.transform.GetChild(state.stateID).gameObject.transform);
+            Slot slot = instance.playerContainer.transform.GetChild(state.stateID).gameObject.GetComponent<Slot>();//获得对应的slot槽位
+            slot.stateOnThisSlot = state;
+            stateImage.sprite = state.stateSprite;
             stateImage.transform.localScale = new Vector3(1f, 1f, 1f);
-            if (state.StateID == 0)
+            if (state.stateID == statesContainer.defaultCatStateID)
                 stateImage.transform.localScale = new Vector3(2f, 2f, 2f);
         }
-        instance.DescriptionText.text = "";
     }
 
     private void OnEnable()
     {
-        instance.DescriptionText.text = "";
+        ClearTextOnShow();
+    }
+    
+    void ClearTextOnShow()
+    {
+        instance.stateDescriptionText.text = "";
     }
 
     public static void ShowDescription(State state)
     {
         if(state!=null)
-            instance.DescriptionText.text = state.StateDescription;
+            instance.stateDescriptionText.text = state.stateDescription;
     }
 }

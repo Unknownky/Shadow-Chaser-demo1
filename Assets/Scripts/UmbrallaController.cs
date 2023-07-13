@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// øÿ÷∆”Í…°–ŒÃ¨
 /// </summary>
-public class UmbrallaController : MonoBehaviour, IStates
+public class UmbrallaController : MonoBehaviour, IStateController
 {
     [Header("PlayerComponent")]
     [SerializeField] private Animator _animator;
@@ -29,9 +29,23 @@ public class UmbrallaController : MonoBehaviour, IStates
     private float horizontal;
     private bool isFacingRight;
 
-    public void AnimatorUpdate()
+
+    private void OnEnable()
     {
-        return;
+        InitParameters();
+
+    }
+
+
+    private void Update()
+    {
+        Movement();
+        Flip();
+    }
+
+    public void Movement()
+    {
+        horizontal = Input.GetAxisRaw("Horizontal");
     }
 
     public void Flip()
@@ -44,6 +58,16 @@ public class UmbrallaController : MonoBehaviour, IStates
             transform.localScale = localScale;
         }
     }
+    private void FixedUpdate()
+    {
+        PhysicalUpdate();
+    }
+
+    public void AnimatorUpdate()
+    {
+        return;
+    }
+
 
     public bool isOnGrounded()
     {
@@ -56,33 +80,16 @@ public class UmbrallaController : MonoBehaviour, IStates
         Gizmos.DrawWireSphere(groundCheck.position, DetectRadius);
     }
 
-    public void Movement()
+
+    public void PhysicalUpdate()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
+        playerBody2D.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
     }
 
-    public void StatesChange()
-    {
-        bool key = Input.GetKey(KeyCode.Tab);
-        if (key)
-            statesContainer.SetActive(true);
-        else
-            statesContainer.SetActive(false);
-    }
 
-    private void OnEnable()
+    public void InitParameters()
     {
         GameObject Canvas = GameObject.Find("Canvas");
         statesContainer = Canvas.transform.GetChild(0).gameObject;
-    }
-
-    private void Update()
-    {
-        Movement();
-    }
-
-    private void FixedUpdate()
-    {
-        playerBody2D.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
     }
 }

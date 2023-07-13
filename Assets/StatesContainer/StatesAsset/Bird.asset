@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a040703fb7cb9d49bf030a92f25cd92, type: 3}
   m_Name: Bird
   m_EditorClassIdentifier: 
-  container: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
-  Name: Bird
-  StateSprite: {fileID: 21300000, guid: dc0b92f528ea9a343be6f3746c574290, type: 3}
-  StateDescription: "\u8FD9\u662F\u9E1F\u5F62\u6001\uFF0C\u80FD\u591F\u5728\u5E73\u6D41\u7684\u7A7A\u4E2D\u98DE\u7FD4(\u63CF\u8FF0\u6709\u5F85\u66F4\u6539)"
-  StateID: 2
-  StatePrefab: {fileID: 6852436187254951779, guid: 96273007a08c6c44fb799753675fe558, type: 3}
+  statesContainer: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
+  stateName: Bird
+  stateSprite: {fileID: 21300000, guid: dc0b92f528ea9a343be6f3746c574290, type: 3}
+  stateDescription: "\u8FD9\u662F\u9E1F\u5F62\u6001\uFF0C\u80FD\u591F\u5728\u5E73\u6D41\u7684\u7A7A\u4E2D\u98DE\u7FD4(\u63CF\u8FF0\u6709\u5F85\u66F4\u6539)"
+  stateID: 2
+  statePrefab: {fileID: 6852436187254951779, guid: 96273007a08c6c44fb799753675fe558, type: 3}

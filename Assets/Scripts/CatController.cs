@@ -1,11 +1,12 @@
 using System.Data;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 /// <summary>
 /// 控制猫形态
 /// </summary>
 
-public class PlayerController : MonoBehaviour
+public class CatController : MonoBehaviour
 {
     [Header("PlayerComponent")]
     [SerializeField] private Animator _animator;
@@ -30,7 +31,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject statesContainer;
 
 
-
     //static PlayerController instance;
     private float horizontal;
     private bool isFacingRight;
@@ -38,17 +38,22 @@ public class PlayerController : MonoBehaviour
     public float StretchingTime = 5f;
     public float LickingTime = 15f;
     public float Sleep1Time = 23f;
-    private bool playLip1 = true;
-    private bool playLip2 = true;
-    private bool playLip3 = true;
+    private bool canStretching = true;
+    private bool canLicking = true;
+    private bool canSleep1 = true;
     private bool isIdle = true;
-    private bool canRecord;
+    private bool canRecordOnGroundHorizontalPosition;
 
     private void Awake()//单例模式
     {
-        //if(instance!=null)
+        //if (instance != null)
         //    Destroy(this);
         //instance = this;
+        InitParameters();
+    }
+
+    void InitParameters()
+    {
         GameObject Canvas = GameObject.Find("Canvas");
         statesContainer = Canvas.transform.GetChild(0).gameObject;
         IdleTime = 0f;
@@ -57,12 +62,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        StatesChange();
+        StatesChangePannelCheck();
         Movement();//调整移动
         Flip();//翻转脸
     }
 
-    private void StatesChange()
+    private void StatesChangePannelCheck()
     {
         bool key = Input.GetKey(KeyCode.Tab);
         if (key)
@@ -87,7 +92,6 @@ public class PlayerController : MonoBehaviour
             horizontal *= rushAccelerate;
         }
     }
-
     private void Flip()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
@@ -96,6 +100,82 @@ public class PlayerController : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+        }
+    }
+    private void FixedUpdate()
+    {
+        //时间更新
+        IdleParametersUpdate();
+
+        //动画更新
+        AnimatorUpdate();
+
+        //物理更新
+        PhysicalUpdate();
+    }
+
+    void IdleParametersUpdate()
+    {
+        if (playerBody2D.velocity == Vector2.zero)
+        {
+            isIdle = true;
+            IdleTime += Time.fixedDeltaTime;
+        }
+        else//移动的话更新bool值
+        {
+            canStretching = true;
+            canLicking = true;
+            canSleep1 = true;
+            isIdle = false;
+            IdleTime = 0f;
+        }
+    }
+
+
+
+    private void AnimatorUpdate()
+    {
+        if (IdleTime >= StretchingTime && canStretching)
+        {
+            _animator.Play("Stretching");
+            canStretching = false;
+        }
+
+        if (IdleTime >= LickingTime && canLicking)
+        {
+            _animator.Play("Licking");
+            canLicking = false;
+        }
+
+        if (IdleTime >= Sleep1Time && canSleep1)
+        {
+            _animator.Play("Sleep1");
+            canSleep1 = false;
+        }
+
+        _animator.SetBool("isOnGround", isOnGrounded());
+        _animator.SetFloat("Speed", Mathf.Abs(playerBody2D.velocity.x));
+        _animator.SetFloat("Yspeed", Mathf.Abs(playerBody2D.velocity.y));
+        _animator.SetFloat("IdleTime", IdleTime);
+        _animator.SetBool("isIdle", isIdle);
+    }
+
+    void PhysicalUpdate()
+    {
+        if (playerBody2D.velocity.y <= 0f)
+            playerBody2D.gravityScale = fallingGravityScale;
+        else
+            playerBody2D.gravityScale = commonGravityScale;
+        playerBody2D.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
+
+        if (isOnGrounded() && canRecordOnGroundHorizontalPosition)
+        {
+            playerBody2D.transform.position = new Vector3(playerBody2D.transform.position.x, playerBody2D.transform.position.y - DetectRadius / 2f, 1);
+            canRecordOnGroundHorizontalPosition = false;
+        }
+        if (!isOnGrounded())
+        {
+            canRecordOnGroundHorizontalPosition = true;
         }
     }
     private bool isOnGrounded()
@@ -107,71 +187,5 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, DetectRadius);
-    }
-
-    private void AnimatorUpdate()
-    {
-        if (IdleTime >= StretchingTime && playLip1)
-        {
-            _animator.Play("Stretching");
-            playLip1 = false;
-        }
-
-        if (IdleTime >= LickingTime && playLip2)
-        {
-            _animator.Play("Licking");
-            playLip2 = false;
-        }
-
-        if (IdleTime >= Sleep1Time && playLip3)
-        {
-            _animator.Play("Sleep1");
-            playLip3 = false;
-        }
-
-        _animator.SetBool("isOnGround", isOnGrounded());
-        _animator.SetFloat("Speed", Mathf.Abs(playerBody2D.velocity.x));
-        _animator.SetFloat("Yspeed", Mathf.Abs(playerBody2D.velocity.y));
-        _animator.SetFloat("IdleTime", IdleTime);
-        _animator.SetBool("isIdle", isIdle);
-    }
-
-    private void FixedUpdate()
-    {
-        //时间更新
-        if ( playerBody2D.velocity == Vector2.zero)
-        {
-            isIdle = true;
-            IdleTime += Time.fixedDeltaTime;
-        }
-        else//移动的话更新bool值
-        {
-            playLip1 = true;
-            playLip2 = true;
-            playLip3 = true;
-            isIdle = false;
-            IdleTime = 0f;
-        }
-
-        //动画更新
-        AnimatorUpdate();
-
-        //物理更新
-        if (playerBody2D.velocity.y <= 0f)
-            playerBody2D.gravityScale = fallingGravityScale;
-        else
-            playerBody2D.gravityScale = commonGravityScale;
-        playerBody2D.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
-
-        
-        if (isOnGrounded() && canRecord)
-        {
-            playerBody2D.transform.position = new Vector3(playerBody2D.transform.position.x, playerBody2D.transform.position.y - DetectRadius / 2f, 1);
-            canRecord = false;
-        }
-        if (!isOnGrounded())
-        {
-            canRecord = true;
-        }
     }
 }
