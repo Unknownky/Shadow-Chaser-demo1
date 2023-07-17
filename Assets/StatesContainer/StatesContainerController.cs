@@ -14,7 +14,6 @@ public class StatesContainerController : MonoBehaviour
     static StatesContainerController instance;
     public static int currentState; //由状态控制脚本保存当前的状态，便于出强光区域时，对应的脚本获取状态值进行脚本的控制和图像的切换
 
-
     private void Awake()//在开启时更新
     {
         if (instance != null)//使用单例模式

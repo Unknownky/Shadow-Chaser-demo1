@@ -89,7 +89,6 @@ public class UmbrallaController : MonoBehaviour, IStateController
 
     public void InitParameters()
     {
-        GameObject Canvas = GameObject.Find("Canvas");
-        statesContainer = Canvas.transform.GetChild(0).gameObject;
+        //statesContainer = StatesContainerController.containerPanel;
     }
 }

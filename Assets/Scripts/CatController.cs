@@ -54,8 +54,7 @@ public class CatController : MonoBehaviour
 
     void InitParameters()
     {
-        GameObject Canvas = GameObject.Find("Canvas");
-        statesContainer = Canvas.transform.GetChild(0).gameObject;
+        //statesContainer = StatesContainerController.containerPanel;
         IdleTime = 0f;
         isFacingRight = true;
     }
