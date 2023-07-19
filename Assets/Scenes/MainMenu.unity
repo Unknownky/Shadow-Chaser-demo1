@@ -3200,7 +3200,7 @@ MonoBehaviour:
   qulityDropdown: {fileID: 2007619306}
   fullScreenToggle: {fileID: 1287695042}
   confirmationPromote: {fileID: 852941292}
-  _newGameLevel: Level1
+  _newGameLevel: MainGameScene
   noSavedGameDialog: {fileID: 1270266813}
   resolutionDropdown: {fileID: 1055221952}
 --- !u!4 &684614057
