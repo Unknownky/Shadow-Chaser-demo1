@@ -36,7 +36,6 @@ namespace BookSystem
         }
         #endregion
 
-
         #region PageController
         /// <summary>
         /// 更新获取了的格子的显示，即用于页面图片的更新

@@ -132,10 +132,10 @@ TextureImporter:
       name: left-page_0
       rect:
         serializedVersion: 2
-        x: 112
-        y: 72
-        width: 847
-        height: 937
+        x: 110
+        y: 71
+        width: 851
+        height: 936
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

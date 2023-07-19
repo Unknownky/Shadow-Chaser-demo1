@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f19e90b91234c9140844af2c361b9335
+guid: d0704196f1ddd7c4f8fbeea3096d74f8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -20,7 +20,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -45,14 +45,14 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.7261293, y: 0.50475746}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 962, y: 71, z: 110, w: 71}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -63,7 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -129,38 +129,42 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cat-1-Sleeping1_0
+      name: right-page_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 50
-        height: 50
+        x: 959
+        y: 70
+        width: 851
+        height: 936
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 829154ad29ed97d4588d951d7421cff8
-      internalID: 1341287340
+      spriteID: 71bc3f3c75f1c894ca8db5ec02f18cc9
+      internalID: -2130517824
       vertices: []
       indices: 
       edges: []
       weights: []
-    outline: []
+    outline:
+    - - {x: 1.9234619, y: -472.4177}
+      - {x: 1.2698364, y: 465.37183}
+      - {x: 843.2466, y: 465.3719}
+      - {x: 843.0288, y: -469.0783}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cat-1-Sleeping1_0: 1341287340
+      right-page_0: -2130517824
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
