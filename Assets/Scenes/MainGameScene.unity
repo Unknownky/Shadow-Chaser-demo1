@@ -2505,6 +2505,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1035672100}
     m_Modifications:
+    - target: {fileID: 2841986527734389668, guid: d29d60c1bba13a54581782b6c0befc40, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2841986528689586347, guid: d29d60c1bba13a54581782b6c0befc40, type: 3}
       propertyPath: m_SizeDelta.x
       value: 854
@@ -2512,6 +2516,10 @@ PrefabInstance:
     - target: {fileID: 2841986528689586347, guid: d29d60c1bba13a54581782b6c0befc40, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -3.0000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841986528689604429, guid: d29d60c1bba13a54581782b6c0befc40, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2841986528689633041, guid: d29d60c1bba13a54581782b6c0befc40, type: 3}
       propertyPath: m_SizeDelta.x

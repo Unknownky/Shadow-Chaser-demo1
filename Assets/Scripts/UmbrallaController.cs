@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// øÿ÷∆”Í…°–ŒÃ¨
 /// </summary>
-public class UmbrallaController : MonoBehaviour, IStateController
+public class UmbrallaController : DragController, IStateController
 {
     [Header("PlayerComponent")]
     [SerializeField] private Animator _animator;
@@ -33,9 +33,7 @@ public class UmbrallaController : MonoBehaviour, IStateController
     private void OnEnable()
     {
         InitParameters();
-
     }
-
 
     private void Update()
     {
@@ -58,6 +56,8 @@ public class UmbrallaController : MonoBehaviour, IStateController
             transform.localScale = localScale;
         }
     }
+
+
     private void FixedUpdate()
     {
         PhysicalUpdate();

@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 
@@ -17,10 +16,17 @@ namespace EventSystem
 
         private Transform _targetTransform;
 
-
         private void Awake()
         {
             SmoothMoving(defaulttransform);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape)) 
+            {
+                SmoothMoving(defaulttransform);
+            }
         }
 
         #region SmoothMoving
@@ -52,7 +58,6 @@ namespace EventSystem
             }
             transform.position = _targetTransform.position;
         }
-
         #endregion
     }
 }

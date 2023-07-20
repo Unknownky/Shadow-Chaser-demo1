@@ -36,23 +36,8 @@ namespace EventSystem
         #endregion
 
         #region Event Help Function
-        private void OnMouseDown()
-        {
-            var mousePosition = Input.mousePosition;
-            //将屏幕坐标转换为世界坐标的射线
-            Ray ray = mainCamera.ScreenPointToRay(mousePosition);
-            RaycastHit hit;
-            if(Physics.Raycast(ray, out hit))
-            {
-                GameObject clickedObject = hit.collider.gameObject;
-#if UNITY_EDITOR
-                Debug.Log($"Hit gameobject name is {clickedObject.name}");
-#endif
-
-            }
 
 
-        }
         #endregion
 
 
