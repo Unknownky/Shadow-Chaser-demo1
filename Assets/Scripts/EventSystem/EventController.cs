@@ -3,7 +3,7 @@ using UnityEngine;
 namespace EventSystem
 {
     /// <summary>
-    /// ¿ØÖÆÊÀ½çÎïÌåµÄ»¥¶¯
+    /// æŽ§åˆ¶ä¸–ç•Œç‰©ä½“çš„äº’åŠ¨
     /// </summary>
     public class EventController:MonoBehaviour
     {
@@ -18,21 +18,15 @@ namespace EventSystem
 
 
         #region EnvironmentEvent
-        public void PointDragItems(GameObject dragGameObject)
+        public void MouseEnterMark()
         {
-#if UNITY_EDITOR
-            Debug.Log("Drag items");
-#endif
-            worldMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            dragGameObject.transform.position = worldMousePosition - dragOffset;
+
         }
 
-        public void PointClick()
+        public void MouseClickMark()
         {
-            Debug.Log("Clicked");
+
         }
-
-
         #endregion
 
         #region Event Help Function

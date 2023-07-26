@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// ×÷Îª¸¸Àà£¬¼Ì³ĞµÄ×ÓÀàÄÜ¹»±»ÍÏ¶¯
+/// ä½œä¸ºçˆ¶ç±»ï¼Œç»§æ‰¿çš„å­ç±»èƒ½å¤Ÿè¢«æ‹–åŠ¨
 /// </summary>
 public class DragController : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class DragController : MonoBehaviour
     #endregion
 
     /// <summary>
-    /// ¶¨ÒåÊó±êµã»÷
+    /// å®šä¹‰é¼ æ ‡ç‚¹å‡»
     /// </summary>
     protected void OnMouseDown()
     {
@@ -19,7 +19,7 @@ public class DragController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¶¨ÒåÊó±êÍÏ¶¯
+    /// å®šä¹‰é¼ æ ‡æ‹–åŠ¨
     /// </summary>
     protected void OnMouseDrag()
     {

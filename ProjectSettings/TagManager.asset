@@ -46,8 +46,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BookMarks
+    uniqueID: 65877439
+    locked: 0
   - name: BackGround
     uniqueID: 2299489373
+    locked: 0
+  - name: Cloud
+    uniqueID: 639469521
     locked: 0
   - name: Stream
     uniqueID: 2079352377
