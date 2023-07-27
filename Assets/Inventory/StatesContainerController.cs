@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// �����ڹܿ�StateSlot��Pannel�����ڿ���UI(UI�߼�֮�����)
+/// 挂载在管控StateSlot的Pannel上用于控制UI(UI逻辑之后更改)
 /// </summary>
 public class StatesContainerController : MonoBehaviour
 {
@@ -12,11 +12,11 @@ public class StatesContainerController : MonoBehaviour
     public Image defaultImagePrefab;
 
     static StatesContainerController instance;
-    public static int currentState; //��״̬���ƽű����浱ǰ��״̬�����ڳ�ǿ������ʱ����Ӧ�Ľű���ȡ״ֵ̬���нű��Ŀ��ƺ�ͼ����л�
+    public static int currentState; //由状态控制脚本保存当前的状态，便于出强光区域时，对应的脚本获取状态值进行脚本的控制和图像的切换
 
-    private void Awake()//�ڿ���ʱ����
+    private void Awake()//在开启时更新
     {
-        if (instance != null)//ʹ�õ���ģʽ
+        if (instance != null)//使用单例模式
             Destroy(instance);
         instance = this;
 
@@ -31,7 +31,7 @@ public class StatesContainerController : MonoBehaviour
         {
             Image stateImage = Instantiate(instance.defaultImagePrefab, instance.playerContainer.transform.GetChild(state.stateID).position, Quaternion.identity);
             stateImage.gameObject.transform.SetParent(instance.playerContainer.transform.GetChild(state.stateID).gameObject.transform);
-            StateSlot slot = instance.playerContainer.transform.GetChild(state.stateID).gameObject.GetComponent<StateSlot>();//��ö�Ӧ��slot��λ
+            StateSlot slot = instance.playerContainer.transform.GetChild(state.stateID).gameObject.GetComponent<StateSlot>();//获得对应的slot槽位
             slot.stateOnThisSlot = state;
             stateImage.sprite = state.stateSprite;
             stateImage.transform.localScale = new Vector3(1f, 1f, 1f);
