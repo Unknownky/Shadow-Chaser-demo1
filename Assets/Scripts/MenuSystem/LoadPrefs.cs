@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-//½øĞĞÄ¬ÈÏprefabÎÄ¼şµÄÉèÖÃ,ÔÚÕâÀïÖ»ĞèÒªÉùÃ÷ÕæÕıĞèÒª½øĞĞprefabÉèÖÃµÄÎïÌå£¬¿ÉÒÔÍ¨¹ıMenuControllerÖĞÊ¹ÓÃPlayerFabµÄÊıÁ¿½øĞĞÉùÃ÷
+//è¿›è¡Œé»˜è®¤prefabæ–‡ä»¶çš„è®¾ç½®,åœ¨è¿™é‡Œåªéœ€è¦å£°æ˜çœŸæ­£éœ€è¦è¿›è¡Œprefabè®¾ç½®çš„ç‰©ä½“ï¼Œå¯ä»¥é€šè¿‡MenuControllerä¸­ä½¿ç”¨PlayerFabçš„æ•°é‡è¿›è¡Œå£°æ˜
 public class LoadPrefs : MonoBehaviour
 {
     [Header("General Setting")]
@@ -10,31 +9,31 @@ public class LoadPrefs : MonoBehaviour
     [SerializeField] private MenuController menuController;
 
     [Header("Volume Setting")]
-    [SerializeField] private TMP_Text volumeTextValue = null;
+    [SerializeField] private Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
 
     [Header("Brightness Setting")]
-    [SerializeField] private TMP_Text BrightnessTextValue = null;
+    [SerializeField] private Text BrightnessTextValue = null;
     [SerializeField] private Slider BrightnessSlider = null;
 
     [Header("Quality Level Setting")]
-    [SerializeField] private TMP_Dropdown qulityDropdown = null;
+    [SerializeField] private Dropdown qulityDropdown = null;
 
     [Header("FullScreen Setting")]
     [SerializeField] private Toggle fullScreenToggle;
 
     [Header("Sensitivity Setting")]
-    [SerializeField] private TMP_Text ControllerSenTextValue = null;
+    [SerializeField] private Text ControllerSenTextValue = null;
     [SerializeField] private Slider ControllerSenSlider = null;
 
     [Header("InvertY Setting")]
     [SerializeField] private Toggle invertYToggle = null;
 
-    private void Awake()//Ê¹ÓÃAwakeÊ¹µÃÆ«ºÃÉèÖÃ×î¿ì½øĞĞ¼ÓÔØ
+    private void Awake()//ä½¿ç”¨Awakeä½¿å¾—åå¥½è®¾ç½®æœ€å¿«è¿›è¡ŒåŠ è½½
     {
         if (canUse)
         {
-            if (PlayerPrefs.HasKey("masterVolume"))//Èç¹û¸Ãpref´æÔÚ
+            if (PlayerPrefs.HasKey("masterVolume"))//å¦‚æœè¯¥prefå­˜åœ¨
             {
                 float localVolume = PlayerPrefs.GetFloat("masterVolume");
 
@@ -44,7 +43,7 @@ public class LoadPrefs : MonoBehaviour
             }
             else
             {
-                menuController.ResetButton("Audio");//Èç¹ûÃ»ÓĞÖØÖÃ±£Ö¤²»³ö´í
+                menuController.ResetButton("Audio");//å¦‚æœæ²¡æœ‰é‡ç½®ä¿è¯ä¸å‡ºé”™
             }
 
             if (PlayerPrefs.HasKey("masterQuality"))
@@ -76,7 +75,7 @@ public class LoadPrefs : MonoBehaviour
 
                 BrightnessTextValue.text = localBrightness.ToString("0.0");
                 BrightnessSlider.value = localBrightness;
-                //¶ÔÓ¦¸Ä±äÁÁ¶ÈµÄ´úÂë
+                //å¯¹åº”æ”¹å˜äº®åº¦çš„ä»£ç 
             }
 
             if (PlayerPrefs.HasKey("masterSens"))

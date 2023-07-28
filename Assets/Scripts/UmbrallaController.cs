@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 /// <summary>
-/// ¿ØÖÆÓêÉ¡ĞÎÌ¬
+/// æ§åˆ¶é›¨ä¼å½¢æ€
 /// </summary>
 public class UmbrallaController : DragController, IStateController
 {

@@ -3,57 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro;
 using UnityEngine.Audio;
 
 public class MenuController : MonoBehaviour
 {
-    [Header("Volume Setting")]//Ê¹ÓÃHeaderÊ¹²»Í¬×Ö¶ÎËùÊôµÄ·¶Î§ÇåÎú
+    [Header("Volume Setting")]//ä½¿ç”¨Headerä½¿ä¸åŒå­—æ®µæ‰€å±çš„èŒƒå›´æ¸…æ™°
     [SerializeField] private AudioMixer audioMixer;
-    [SerializeField] private TMP_Text volumeTextValue = null;//¸³³õÖµ
+    [SerializeField] private Text volumeTextValue = null;//èµ‹åˆå€¼
     [SerializeField] private Slider volumeSlider = null;
     [SerializeField] private float defaultVolume = 1.0f;
 
-    [Header("Gameplay Settings")]//ÉèÖÃGameplay
-    [SerializeField] private TMP_Text ControllerSenTextValue = null;
+    [Header("Gameplay Settings")]//è®¾ç½®Gameplay
+    [SerializeField] private Text ControllerSenTextValue = null;
     [SerializeField] private Slider ControllerSenSlider = null;
     [SerializeField] private int defaultSenSlider = 4;
-    public int mainControllerSen = 4;//ÓÃÓÚÆäËû½Å±¾µÄ·ÃÎÊ,Ò²¿ÉÒÔÓÃÓÚVolumeÉèÖÃ
+    public int mainControllerSen = 4;//ç”¨äºå…¶ä»–è„šæœ¬çš„è®¿é—®,ä¹Ÿå¯ä»¥ç”¨äºVolumeè®¾ç½®
 
     [Header("Toggle Setting")]
     [SerializeField] private Toggle invertYToggle = null;
 
     [Header("Graphics Settings")]
-    [SerializeField] private TMP_Text BrightnessTextValue = null;
+    [SerializeField] private Text BrightnessTextValue = null;
     [SerializeField] private Slider BrightnessSlider = null;
-    [SerializeField] private float defaultBrightness = 1.0f;//ÁÁ¶È±ä»¯ÏÔÊ¾µÄÎÄ±¾ĞèÒªĞòÁĞ»¯µÄÉùÃ÷£¬ÁÁ¶ÈSlider¿Ø¼ş£¬Ä¬ÈÏÁÁ¶È(ÓÃÓÚreset)
+    [SerializeField] private float defaultBrightness = 1.0f;//äº®åº¦å˜åŒ–æ˜¾ç¤ºçš„æ–‡æœ¬éœ€è¦åºåˆ—åŒ–çš„å£°æ˜ï¼Œäº®åº¦Slideræ§ä»¶ï¼Œé»˜è®¤äº®åº¦(ç”¨äºreset)
 
     [Space(10)]
-    [SerializeField] private TMP_Dropdown qulityDropdown = null;
+    [SerializeField] private Dropdown qulityDropdown = null;
     [SerializeField] private Toggle fullScreenToggle;
 
     private int _qualityLevel;
     private float _brightnessLevel;
-    private bool _isFullScreen;//ÓÉÓÚ½øĞĞÓ¦ÓÃºó²»ĞèÒªÔÚÆäËû½Å±¾½øĞĞÊ¹ÓÃ£¬Òò´ËÊ¹ÓÃprivateĞŞÊÎ
+    private bool _isFullScreen;//ç”±äºè¿›è¡Œåº”ç”¨åä¸éœ€è¦åœ¨å…¶ä»–è„šæœ¬è¿›è¡Œä½¿ç”¨ï¼Œå› æ­¤ä½¿ç”¨privateä¿®é¥°
 
 
     [Header("Confirmation")]
     [SerializeField] private GameObject confirmationPromote = null;
 
-    [Header("Levels To Load")]//Ê¹ÓÃHeader¿ÉÒÔÈÃÎÄ×ÖÔÚInspectorÖĞÏÔÊ¾
+    [Header("Levels To Load")]//ä½¿ç”¨Headerå¯ä»¥è®©æ–‡å­—åœ¨Inspectorä¸­æ˜¾ç¤º
     public string _newGameLevel;
     private string levelToLoad;
-    [SerializeField] private GameObject noSavedGameDialog = null;//ĞòÁĞ»¯×Ö·û£¬ÓÃÀ´¿ØÖÆsavegamedialog
+    [SerializeField] private GameObject noSavedGameDialog = null;//åºåˆ—åŒ–å­—ç¬¦ï¼Œç”¨æ¥æ§åˆ¶savegamedialog
 
 
     [Header("Resolution Setting")]
-    public TMP_Dropdown resolutionDropdown = null;//ÓÉÓÚĞèÒªÔÚ½Å±¾ÖĞ¶Ô¸ÃÎïÌå½øĞĞµ÷ÕûÒò´ËĞèÒª´«Èë¸ÃDropdown£»¶ÔÓ¦µÄQualityÖ»ĞèÒªµ¥¸ö·½·¨
+    public Dropdown resolutionDropdown = null;//ç”±äºéœ€è¦åœ¨è„šæœ¬ä¸­å¯¹è¯¥ç‰©ä½“è¿›è¡Œè°ƒæ•´å› æ­¤éœ€è¦ä¼ å…¥è¯¥Dropdownï¼›å¯¹åº”çš„Qualityåªéœ€è¦å•ä¸ªæ–¹æ³•
     private Resolution[] resolutions;
 
-    private void Start()//¿ªÊ¼¼´½øĞĞ
+    private void Start()//å¼€å§‹å³è¿›è¡Œ
     {
-        resolutions = Screen.resolutions;//»ñÈ¡¸ù¾İµ±Ç°ÆÁÄ»»ñÈ¡µÄÈ«²¿·Ö±æÂÊÊı×é
-        resolutionDropdown.ClearOptions();//Çå¿ÕÑ¡ÏîÓÃÓÚÒÔÏÂ»ñÈ¡µ½µÄstringÁĞ±íµÄÌí¼Ó£¬ÕâÊÇ¹Ì¶¨µÄ²Ù×÷
+        resolutions = Screen.resolutions;//è·å–æ ¹æ®å½“å‰å±å¹•è·å–çš„å…¨éƒ¨åˆ†è¾¨ç‡æ•°ç»„
+        resolutionDropdown.ClearOptions();//æ¸…ç©ºé€‰é¡¹ç”¨äºä»¥ä¸‹è·å–åˆ°çš„stringåˆ—è¡¨çš„æ·»åŠ ï¼Œè¿™æ˜¯å›ºå®šçš„æ“ä½œ
 
         List<string> options = new List<string>();
 
@@ -68,53 +67,53 @@ public class MenuController : MonoBehaviour
             {
                 currentResolutionIndex = i;
             }
-        }//ÒÔÉÏ»ñÈ¡optionsÁĞ±íÒÔÓÃÓÚDropdownÏÔÊ¾;»ñÈ¡µÄCurrenResolutionIndexÓÃÓÚµ±Ç°Ë÷ÒıµÄÏÔÊ¾;Ö÷ÒªÊ±»ùÓÚListµÄ
+        }//ä»¥ä¸Šè·å–optionsåˆ—è¡¨ä»¥ç”¨äºDropdownæ˜¾ç¤º;è·å–çš„CurrenResolutionIndexç”¨äºå½“å‰ç´¢å¼•çš„æ˜¾ç¤º;ä¸»è¦æ—¶åŸºäºListçš„
 
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
     }
 
-    public void SetResolution(int resolutionIndex)//½«¸Ã·½·¨¹ÒÔØµ½DropdownÖĞÒÔµ÷ÕûÆÁÄ»µÄ·Ö±æÂÊ
+    public void SetResolution(int resolutionIndex)//å°†è¯¥æ–¹æ³•æŒ‚è½½åˆ°Dropdownä¸­ä»¥è°ƒæ•´å±å¹•çš„åˆ†è¾¨ç‡
     {
-        Resolution resolution = resolutions[resolutionIndex];//»ñÈ¡DropdownÖĞÊ¹ÓÃµÄIndex¶ÔÓ¦µÄ·Ö±æÂÊ½á¹¹Ìå
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);//¸ù¾İµ±Ç°ÆÁÄ»ÊÇ·ñÎªÈ«ÆÁÀ´ÉèÖÃ·Ö±æÂÊ
+        Resolution resolution = resolutions[resolutionIndex];//è·å–Dropdownä¸­ä½¿ç”¨çš„Indexå¯¹åº”çš„åˆ†è¾¨ç‡ç»“æ„ä½“
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);//æ ¹æ®å½“å‰å±å¹•æ˜¯å¦ä¸ºå…¨å±æ¥è®¾ç½®åˆ†è¾¨ç‡
     }
     public void NewGameDialogYes()
     {
-        SceneManager.LoadScene(_newGameLevel);//Èç¹ûÔÚNewGameDialogÖĞ°´ÁËyesÔò¼ÓÔØĞÂµÄ³¡¾°
+        SceneManager.LoadScene(_newGameLevel);//å¦‚æœåœ¨NewGameDialogä¸­æŒ‰äº†yesåˆ™åŠ è½½æ–°çš„åœºæ™¯
     }
 
-    public void LoadGameDialogYes()//Èç¹ûÓĞ±£´æÎÄ¼şµÄ»°Ôò¼ÓÔØ±£´æµÄ³¡¾°£¬Ã»ÓĞ¾Íµ¯³öNoSavedGameDialog
+    public void LoadGameDialogYes()//å¦‚æœæœ‰ä¿å­˜æ–‡ä»¶çš„è¯åˆ™åŠ è½½ä¿å­˜çš„åœºæ™¯ï¼Œæ²¡æœ‰å°±å¼¹å‡ºNoSavedGameDialog
     {
-        if (PlayerPrefs.HasKey("SavedLevel"))//¼ì²âÊÇ·ñÓĞ±£´æµÄÓÎÏ·
+        if (PlayerPrefs.HasKey("SavedLevel"))//æ£€æµ‹æ˜¯å¦æœ‰ä¿å­˜çš„æ¸¸æˆ
         {
-            levelToLoad = PlayerPrefs.GetString("SavedLevel");//PlayerPrefsÎªÍæ¼ÒÆ«ºÃÆ÷£¬¼´ÎªÉèÖÃµÄÊı¾İ
+            levelToLoad = PlayerPrefs.GetString("SavedLevel");//PlayerPrefsä¸ºç©å®¶åå¥½å™¨ï¼Œå³ä¸ºè®¾ç½®çš„æ•°æ®
             SceneManager.LoadScene(levelToLoad);
         }
         else
         {
-            noSavedGameDialog.SetActive(true);//µ¯³ö´°¿Ú
+            noSavedGameDialog.SetActive(true);//å¼¹å‡ºçª—å£
         }
     }
 
-    public void ExitButton()//ÍË³öÓÎÏ·
+    public void ExitButton()//é€€å‡ºæ¸¸æˆ
     {
         Application.Quit();
     }
 
-    public void SetVolume(float volume)//ÓÃÓÚSliderµÄ¶¯Ì¬µ÷ÓÃ
-    {//ÓÉÓÚÒôÁ¿ĞèÒªÔÚ»¬¶¯ÊÇËæÊ±¹Û²ì´óĞ¡Òò´ËÔÚÃ¿Ò»´Î±ä»¯ÖĞ¶¼ĞèÒªÓ¦ÓÃµ½AudioListenerÖĞ
-        //AudioListener.volume = volume;//Í¨¹ı¸Ä±äAudioListener(ÒôÆµ¼àÌıÆ÷)µÄvolumeÖµÀ´¸Ã±äÕû¸öÓÎÏ·µÄÒôÁ¿´óĞ¡
+    public void SetVolume(float volume)//ç”¨äºSliderçš„åŠ¨æ€è°ƒç”¨
+    {//ç”±äºéŸ³é‡éœ€è¦åœ¨æ»‘åŠ¨æ˜¯éšæ—¶è§‚å¯Ÿå¤§å°å› æ­¤åœ¨æ¯ä¸€æ¬¡å˜åŒ–ä¸­éƒ½éœ€è¦åº”ç”¨åˆ°AudioListenerä¸­
+        //AudioListener.volume = volume;//é€šè¿‡æ”¹å˜AudioListener(éŸ³é¢‘ç›‘å¬å™¨)çš„volumeå€¼æ¥è¯¥å˜æ•´ä¸ªæ¸¸æˆçš„éŸ³é‡å¤§å°
         float audioVolume = Mathf.Clamp(-80 + volume * 100, -80, 20);
         if(audioMixer!=null)
             audioMixer.SetFloat("Volume", audioVolume);
-        volumeTextValue.text = volume.ToString("0.0");//½«float volume ±£ÁôÒ»Î»Ğ¡ÊıÏÔÊ¾Îªµ±Ç°¹ÒÔØTextµÄtextÄÚÈİ
+        volumeTextValue.text = volume.ToString("0.0");//å°†float volume ä¿ç•™ä¸€ä½å°æ•°æ˜¾ç¤ºä¸ºå½“å‰æŒ‚è½½Textçš„textå†…å®¹
     }
 
     public void SetControllerSen(float sensitivity)
     {
-        mainControllerSen = Mathf.RoundToInt(sensitivity);//Êó±êÁéÃô¶ÈÒ»°ãĞèÒªÔÚÓÎÏ·ÖĞ½øĞĞÌåÑé£¬Òò´ËÏÈÓÃmainControllerSen±£´æÏÂÀ´ÔÙÔÚÓÎÏ·ÖĞÓ¦ÓÃ
+        mainControllerSen = Mathf.RoundToInt(sensitivity);//é¼ æ ‡çµæ•åº¦ä¸€èˆ¬éœ€è¦åœ¨æ¸¸æˆä¸­è¿›è¡Œä½“éªŒï¼Œå› æ­¤å…ˆç”¨mainControllerSenä¿å­˜ä¸‹æ¥å†åœ¨æ¸¸æˆä¸­åº”ç”¨
         ControllerSenTextValue.text = sensitivity.ToString("0");
     }
 
@@ -126,10 +125,10 @@ public class MenuController : MonoBehaviour
 
     public void SetFullScreen(bool isFullScreen)
     {
-        _isFullScreen = isFullScreen;//ÕâÀïÉèÖÃÎªÔÚGraphics ApplyÖĞÓ¦ÓÃµ½ÓÎÏ·ÖĞ
+        _isFullScreen = isFullScreen;//è¿™é‡Œè®¾ç½®ä¸ºåœ¨Graphics Applyä¸­åº”ç”¨åˆ°æ¸¸æˆä¸­
     }
 
-    public void SetQuality(int qualityIndex)//»ñÈ¡ÏÂÀ­ÌõµÄË÷Òı¶ÔÓ¦BuildingÖĞµÄ»­ÖÊÉèÖÃ
+    public void SetQuality(int qualityIndex)//è·å–ä¸‹æ‹‰æ¡çš„ç´¢å¼•å¯¹åº”Buildingä¸­çš„ç”»è´¨è®¾ç½®
     {
         _qualityLevel = qualityIndex;
     }
@@ -137,8 +136,8 @@ public class MenuController : MonoBehaviour
     public void VolumeApply()
     {
         PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
-        //½«AudioListener.volume¸ÃÖµ±£´æÎª"masterVolume"¸ÃÃûÎÄ¼şµÄÍæ¼ÒÆ«ºÃ
-        StartCoroutine(ConfirmationBox());//¿ªÊ¼Ğ¯³Ì
+        //å°†AudioListener.volumeè¯¥å€¼ä¿å­˜ä¸º"masterVolume"è¯¥åæ–‡ä»¶çš„ç©å®¶åå¥½
+        StartCoroutine(ConfirmationBox());//å¼€å§‹æºç¨‹
     }
 
 
@@ -146,51 +145,51 @@ public class MenuController : MonoBehaviour
     {
         if (invertYToggle.isOn)
         {
-            PlayerPrefs.SetInt("masterInvertY", 1);//Èç¹ûYÖá·´×ªToggle´ò¿ªÄÇÃ´Íæ¼ÒÆ«ºÃÖĞ±£´æÕâÒ»ÏîÎªÕæ
-            //InvertY ison Êµ¼Ê¶ÔÓÎÏ·µÄ¸Ä±ä¿ÉÒÔĞ´ÔÚºóÃæ
+            PlayerPrefs.SetInt("masterInvertY", 1);//å¦‚æœYè½´åè½¬Toggleæ‰“å¼€é‚£ä¹ˆç©å®¶åå¥½ä¸­ä¿å­˜è¿™ä¸€é¡¹ä¸ºçœŸ
+            //InvertY ison å®é™…å¯¹æ¸¸æˆçš„æ”¹å˜å¯ä»¥å†™åœ¨åé¢
         }
         else
         {
-            PlayerPrefs.SetInt("masterInvertY", 0);//masterInvertY±£´æµ½Æ«ºÃÖĞÉèÖÃÎª¼Ù
-            //not InvertY Í¬Ñù¿ÉÒÔÔÚÕâºóÃæÌí¼Ó
+            PlayerPrefs.SetInt("masterInvertY", 0);//masterInvertYä¿å­˜åˆ°åå¥½ä¸­è®¾ç½®ä¸ºå‡
+            //not InvertY åŒæ ·å¯ä»¥åœ¨è¿™åé¢æ·»åŠ 
         }
 
-        PlayerPrefs.SetFloat("masterSens", mainControllerSen);//½«mainControllerSenµÄÖµÒÔfloat±£´æÔÚÆ«ºÃÖĞ¡£
-        StartCoroutine(ConfirmationBox());//¿ªÊ¼Ğ¯³Ì
+        PlayerPrefs.SetFloat("masterSens", mainControllerSen);//å°†mainControllerSençš„å€¼ä»¥floatä¿å­˜åœ¨åå¥½ä¸­ã€‚
+        StartCoroutine(ConfirmationBox());//å¼€å§‹æºç¨‹
 
     }
 
     public void GraphicsApply()
     {
         PlayerPrefs.SetFloat("masterBrightness", _brightnessLevel);
-        //ÏÂÃæ¿ÉÒÔÌí¼ÓĞèÒª½øĞĞ¸Ä±äÁÁ¶ÈµÄ´úÂë
+        //ä¸‹é¢å¯ä»¥æ·»åŠ éœ€è¦è¿›è¡Œæ”¹å˜äº®åº¦çš„ä»£ç 
 
-        PlayerPrefs.SetInt("masterFullScreen", (_isFullScreen ? 1:0));//Ã»ÓĞSetBool,using SetInt in place
+        PlayerPrefs.SetInt("masterFullScreen", (_isFullScreen ? 1:0));//æ²¡æœ‰SetBool,using SetInt in place
         Screen.fullScreen = _isFullScreen;
 
         PlayerPrefs.SetInt("masterQuality", _qualityLevel);
-        QualitySettings.SetQualityLevel(_qualityLevel);//µ÷ÓÃBuildingÖĞÉèÖÃµÄÑ¡Ïî£¬ÀàËÆÓëSceneManager
+        QualitySettings.SetQualityLevel(_qualityLevel);//è°ƒç”¨Buildingä¸­è®¾ç½®çš„é€‰é¡¹ï¼Œç±»ä¼¼ä¸SceneManager
 
-        StartCoroutine(ConfirmationBox());//¿ªÊ¼Ğ¯³Ì
+        StartCoroutine(ConfirmationBox());//å¼€å§‹æºç¨‹
     }
-    public void ResetButton(string MenuType)//Ê¹ÓÃ¸Ã·½·¨Ê±¾ÍĞèÒª¸ø³öÒ»¸östring
+    public void ResetButton(string MenuType)//ä½¿ç”¨è¯¥æ–¹æ³•æ—¶å°±éœ€è¦ç»™å‡ºä¸€ä¸ªstring
     { 
         if(MenuType == "Audio")
         {
-            AudioListener.volume = defaultVolume;//½«ÒôÁ¿ÉèÖÃÎª³õÊ¼Öµ
-            volumeTextValue.text = defaultVolume.ToString("0.0");//ÎÄ±¾ÖµÖØÖÃ
-            volumeSlider.value = defaultVolume;//»¬¿éÖµÖØÖÃ
-            VolumeApply();//ÔÙ´Îµ÷ÓÃ½øĞĞ±£´æ·ÀÖ¹³ö´í
+            AudioListener.volume = defaultVolume;//å°†éŸ³é‡è®¾ç½®ä¸ºåˆå§‹å€¼
+            volumeTextValue.text = defaultVolume.ToString("0.0");//æ–‡æœ¬å€¼é‡ç½®
+            volumeSlider.value = defaultVolume;//æ»‘å—å€¼é‡ç½®
+            VolumeApply();//å†æ¬¡è°ƒç”¨è¿›è¡Œä¿å­˜é˜²æ­¢å‡ºé”™
         }
         else if(MenuType == "Gameplay")
         {
-            //PlayerPrefs.SetFloat("masterSens", defaultSenSlider);//SensÉèÖÃÎªÄ¬ÈÏÖµ
-            //PlayerPrefs.SetInt("masterInvertY", 0);//InvertYÉèÖÃÎª0£¨false£©   ÕâÁ½ĞĞÔÚGameApplyÖĞµ÷ÓÃÁË**
-            ControllerSenTextValue.text = defaultSenSlider.ToString("0");//SensÎÄ±¾ÖµÉèÖÃÎªdefaultSenSlider
-            ControllerSenSlider.value = defaultSenSlider;//»¬¿éÖµÖØÖÃ
-            mainControllerSen = defaultSenSlider;//ÉùÃ÷ÖµÖØÖÃ
-            invertYToggle.isOn = false;//¹Ø±ÕYÖá·´×ªµÄ°´Å¥
-            GameplayApply();//±£´æ·ÀÖ¹³ö´í
+            //PlayerPrefs.SetFloat("masterSens", defaultSenSlider);//Sensè®¾ç½®ä¸ºé»˜è®¤å€¼
+            //PlayerPrefs.SetInt("masterInvertY", 0);//InvertYè®¾ç½®ä¸º0ï¼ˆfalseï¼‰   è¿™ä¸¤è¡Œåœ¨GameApplyä¸­è°ƒç”¨äº†**
+            ControllerSenTextValue.text = defaultSenSlider.ToString("0");//Sensæ–‡æœ¬å€¼è®¾ç½®ä¸ºdefaultSenSlider
+            ControllerSenSlider.value = defaultSenSlider;//æ»‘å—å€¼é‡ç½®
+            mainControllerSen = defaultSenSlider;//å£°æ˜å€¼é‡ç½®
+            invertYToggle.isOn = false;//å…³é—­Yè½´åè½¬çš„æŒ‰é’®
+            GameplayApply();//ä¿å­˜é˜²æ­¢å‡ºé”™
         }
         else if(MenuType == "Graphics")
         {
@@ -199,16 +198,16 @@ public class MenuController : MonoBehaviour
             BrightnessSlider.value = defaultBrightness;
 
             _qualityLevel = 1;
-            qulityDropdown.value = _qualityLevel;//1¶ÔÓ¦Î´midµÄË÷Òı
+            qulityDropdown.value = _qualityLevel;//1å¯¹åº”æœªmidçš„ç´¢å¼•
             QualitySettings.SetQualityLevel(_qualityLevel);
 
             _isFullScreen = false;
             fullScreenToggle.isOn = false;
-            Screen.fullScreen = _isFullScreen;//ÉèÖÃÎªÁËÄ¬ÈÏÖµ£¬ºóÃæ¿ÉÒÔÊ¹ÓÃ
+            Screen.fullScreen = _isFullScreen;//è®¾ç½®ä¸ºäº†é»˜è®¤å€¼ï¼Œåé¢å¯ä»¥ä½¿ç”¨
 
-            Resolution currentResolution = Screen.currentResolution;//»ñÈ¡µ±Ç°ÆÁÄ»µÄ·Ö±æÂÊÎªÄ¬ÈÏÖµ
+            Resolution currentResolution = Screen.currentResolution;//è·å–å½“å‰å±å¹•çš„åˆ†è¾¨ç‡ä¸ºé»˜è®¤å€¼
             Screen.SetResolution(currentResolution.width, currentResolution.height, Screen.fullScreen);
-            resolutionDropdown.value = resolutions.Length;//µ÷ÕûDropdownÖµÎª×î´ó£¬¼´µ±Ç°ÆÁÄ»µÄ·Ö±æÂÊÎªÄ¬ÈÏÖµ
+            resolutionDropdown.value = resolutions.Length;//è°ƒæ•´Dropdownå€¼ä¸ºæœ€å¤§ï¼Œå³å½“å‰å±å¹•çš„åˆ†è¾¨ç‡ä¸ºé»˜è®¤å€¼
             GraphicsApply();
         }
     }

@@ -9,6 +9,7 @@ TagManager:
   - Umbralla
   - Bird
   - Container
+  - DragItem
   layers:
   - Default
   - TransparentFX

@@ -13,7 +13,7 @@ public class DragController : MonoBehaviour
     /// <summary>
     /// 定义鼠标点击
     /// </summary>
-    protected void OnMouseDown()
+    protected virtual void OnMouseDown()
     {
         dragOffset = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
     }
@@ -21,7 +21,7 @@ public class DragController : MonoBehaviour
     /// <summary>
     /// 定义鼠标拖动
     /// </summary>
-    protected void OnMouseDrag()
+    protected virtual void OnMouseDrag()
     {
         worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = worldMousePosition - dragOffset;
