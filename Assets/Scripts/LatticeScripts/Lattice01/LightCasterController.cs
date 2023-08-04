@@ -8,6 +8,9 @@ public class LightCasterController : MonoBehaviour
     private GameObject lightCaster;
 
     private static GameObject _lightCaster;
+
+    public static bool isCastering = false;
+
     private void Awake()
     {
         lightCaster = transform.GetChild(0).gameObject;
@@ -16,10 +19,12 @@ public class LightCasterController : MonoBehaviour
 #endif
         lightCaster?.SetActive(false);
         _lightCaster = lightCaster;
+        isCastering = false;
     }
 
     public static void CasterLight()
     {
         _lightCaster.SetActive(true);
+        isCastering = true;
     }
 }

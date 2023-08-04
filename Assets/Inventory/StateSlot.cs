@@ -8,15 +8,30 @@ public class StateSlot : MonoBehaviour//这个脚本用于保存该槽位的信�
     public State stateOnThisSlot;
     public GameObject stateShadow;
     public StatesContainer statesContainer;
-    
+
+    private Vector3 stateShadowDefaultPosition;
     /// <summary>
     /// 用来处理skillUI栏位的选定效果
     /// </summary>
-    public void StateSlotPanelEvent() 
+
+    private void Awake()
     {
-        bool isUsing = stateShadow.activeSelf? true:false;
-        //Controll the UI pannel 
-        stateShadow.SetActive(!isUsing);
+        stateShadowDefaultPosition = stateShadow.transform.position;
+    }
+
+    public void StateSlotPanelOnEvent() 
+    {
+        if (LightCasterController.isCastering)
+        {
+            SetShadowActiveOn();
+            ResetShadowPosition();
+        }
+    }
+
+    public void StateSlotPanelOffEvent()
+    {
+        SetShadowActiveOff();
+        ResetShadowPosition();
     }
 
     /// <summary>
@@ -27,4 +42,26 @@ public class StateSlot : MonoBehaviour//这个脚本用于保存该槽位的信�
         StatesContainerController.ShowDescription(stateOnThisSlot);
         statesContainer.outWillChangeStateID = stateOnThisSlot.stateID;
     }
+
+    #region Help Function
+    private void SetShadowActiveOn()
+    {
+        bool isUsing = stateShadow.activeSelf ? true : false;
+        //Controll the UI pannel 
+        stateShadow.SetActive(!isUsing);
+    }
+
+    private void ResetShadowPosition()
+    {
+        stateShadow.transform.position = stateShadowDefaultPosition;
+    }
+
+    private void SetShadowActiveOff()
+    {
+        bool isUsing = stateShadow.activeSelf ? true : false;
+        stateShadow.SetActive(!isUsing);
+    }
+
+    #endregion
+
 }

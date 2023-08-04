@@ -1703,6 +1703,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1360506983}
   - component: {fileID: 1360506984}
+  - component: {fileID: 1360506986}
+  - component: {fileID: 1360506987}
   m_Layer: 0
   m_Name: UmbrallaShadow
   m_TagString: Untagged
@@ -1782,6 +1784,45 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!61 &1360506986
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360506982}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.23, y: 16.82}
+    newSize: {x: 5.23, y: 16.82}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.23, y: 16.82}
+  m_EdgeRadius: 0
+--- !u!114 &1360506987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360506982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3595f21d2fcb54ab03b786eb63becb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zDragRotation: 180
 --- !u!1 &1364567173
 GameObject:
   m_ObjectHideFlags: 0
@@ -5266,6 +5307,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1944371089}
   - component: {fileID: 1944371090}
+  - component: {fileID: 1944371091}
+  - component: {fileID: 1944371092}
+  - component: {fileID: 1944371093}
   m_Layer: 0
   m_Name: ' CrutchShadow'
   m_TagString: Untagged
@@ -5345,6 +5389,57 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1944371091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944371088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a12fbef016ef6834e8595d2ae8b9830d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1944371092
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944371088}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.56, y: 16.63}
+    newSize: {x: 5.23, y: 16.82}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.56, y: 16.63}
+  m_EdgeRadius: 0
+--- !u!114 &1944371093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944371088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3595f21d2fcb54ab03b786eb63becb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zDragRotation: 0
 --- !u!1 &1978983965
 GameObject:
   m_ObjectHideFlags: 0
@@ -10602,7 +10697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4752106141758998386, guid: 4a0f21cf975220b4b8884ce359df1afb, type: 3}
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StateSlotPanelEvent
+      value: StateSlotPanelOnEvent
       objectReference: {fileID: 0}
     - target: {fileID: 4752106141758998386, guid: 4a0f21cf975220b4b8884ce359df1afb, type: 3}
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -10631,7 +10726,7 @@ PrefabInstance:
       objectReference: {fileID: 453431734}
     - target: {fileID: 5099212035900076204, guid: de3a83fc255dfbc4c9be4f2fda613970, type: 3}
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StateSlotPanelEvent
+      value: StateSlotPanelOnEvent
       objectReference: {fileID: 0}
     - target: {fileID: 5099212035900076204, guid: de3a83fc255dfbc4c9be4f2fda613970, type: 3}
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
