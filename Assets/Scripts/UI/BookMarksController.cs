@@ -22,4 +22,13 @@ public class BookMarksController : MonoBehaviour
         animator.Play(m_name + "Exit");
     }
 
+    public void PointerClickMarks()
+    {
+
+    }    
+    
+    public void PointerClickSkills()
+    {
+
+    }
 }

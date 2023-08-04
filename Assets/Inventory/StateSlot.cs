@@ -1,23 +1,26 @@
 using UnityEngine;
 
 /// <summary>
-/// 状态栏脚本
+/// 鐘舵�佹爮鑴氭湰
 /// </summary>
-public class StateSlot : MonoBehaviour//这个脚本用于保存该槽位的信息，便于记录以及传递给StateContainerController
+public class StateSlot : MonoBehaviour//杩欎釜鑴氭湰鐢ㄤ簬淇濆瓨璇ユЫ浣嶇殑淇℃伅锛屼究浜庤褰曚互鍙婁紶閫掔粰StateContainerController
 {
     public State stateOnThisSlot;
+    public GameObject stateShadow;
     public StatesContainer statesContainer;
-
+    
     /// <summary>
-    /// 用来处理skillUI栏位的选定效果
+    /// 鐢ㄦ潵澶勭悊skillUI鏍忎綅鐨勯�夊畾鏁堟灉
     /// </summary>
     public void StateSlotPanelEvent() 
-    { 
-        
+    {
+        bool isUsing = stateShadow.activeSelf? true:false;
+        //Controll the UI pannel 
+        stateShadow.SetActive(!isUsing);
     }
 
     /// <summary>
-    /// 用来处理选定后点击的效果
+    /// 鐢ㄦ潵澶勭悊閫夊畾鍚庣偣鍑荤殑鏁堟灉
     /// </summary>
     public void SlotOnClicked()
     {

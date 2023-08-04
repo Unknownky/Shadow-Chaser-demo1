@@ -9,15 +9,18 @@ namespace EventSystem
     {
         public Transform defaulttransform;
         /// <summary>
-        /// ÉãÏñÍ·¾àÀëÄ¿±êµÄÎ»ÖÃµÄÆ«ÖÃ
+        /// æ‘„åƒå¤´è·ç¦»ç›®æ ‡çš„ä½ç½®çš„åç½®
         /// </summary>
         public Vector3 offsetPostion = Vector3.zero;
         public float moveSpeed = 0.2f;
 
         private Transform _targetTransform;
 
+        public static bool isMoving;
+
         private void Awake()
         {
+            isMoving = false;
             SmoothMoving(defaulttransform);
         }
 
@@ -32,12 +35,13 @@ namespace EventSystem
         #region SmoothMoving
 
         /// <summary>
-        /// ¸ø³öÄ¿±êµØµãÈÃ¹ÒÔØ½Å±¾µÄÉãÏñÍ·Æ½»¬ÒÆ¶¯ºÍĞı×ªµ½¶ÔÓ¦µÄÎ»ÖÃ
+        /// ç»™å‡ºç›®æ ‡åœ°ç‚¹è®©æŒ‚è½½è„šæœ¬çš„æ‘„åƒå¤´å¹³æ»‘ç§»åŠ¨å’Œæ—‹è½¬åˆ°å¯¹åº”çš„ä½ç½®
         /// <param name="transform"></param>
         public void SmoothMoving(Transform targettransform)
         {
             if (targettransform.position == transform.position)
                 return;
+            isMoving = true;
             _targetTransform = targettransform;
             var modulo = new Func<Vector3, float>((target) => Mathf.Sqrt(target.x * target.x + target.y * target.y + target.z * target.z));
             Vector3 adjustPosition = _targetTransform.position - transform.position;
@@ -57,6 +61,7 @@ namespace EventSystem
                 yield return null;
             }
             transform.position = _targetTransform.position;
+            isMoving = false;
         }
         #endregion
     }

@@ -1,15 +1,16 @@
+using EventSystem;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 namespace BookSystem
 {
     /// <summary>
-    /// ¿ØÖÆ¸÷ÖÖBook³¡¾°µÄEvent»¥¶¯µÄ½Å±¾
+    /// æ§åˆ¶å„ç§Bookåœºæ™¯çš„Eventäº’åŠ¨çš„è„šæœ¬
     /// </summary>
     public class EventController : MonoBehaviour
     {
         /// <summary>
-        /// ´ÓBook½Å±¾»ñµÃÁË¼ÇÂ¼µ±Ç°ÓÎÍæËù´¦Ò³ÃæÊı
+        /// ä»Bookè„šæœ¬è·å¾—äº†è®°å½•å½“å‰æ¸¸ç©æ‰€å¤„é¡µé¢æ•°
         /// </summary>
         public static int currentPageIndex { private get; set; }
 
@@ -28,17 +29,23 @@ namespace BookSystem
         }
 
         #region LatticeEvent
-        public static void PointerClickLattice()
+        public static void PointerClickLattice(GameObject lattice)
         {
             #if UNITY_EDITOR
             Debug.Log("PointerClick this Lattice");
-            #endif
+#endif
+            if (!CameraController.isMoving)
+            {
+                string lat = lattice.name;
+                string pag = lattice.transform.parent.name;
+                SceneManager.LoadScene(pag + "_" + lat);
+            }
         }
         #endregion
 
         #region PageController
         /// <summary>
-        /// ¸üĞÂ»ñÈ¡ÁËµÄ¸ñ×ÓµÄÏÔÊ¾£¬¼´ÓÃÓÚÒ³ÃæÍ¼Æ¬µÄ¸üĞÂ
+        /// æ›´æ–°è·å–äº†çš„æ ¼å­çš„æ˜¾ç¤ºï¼Œå³ç”¨äºé¡µé¢å›¾ç‰‡çš„æ›´æ–°
         /// </summary>
         private void UpdatePages()
         {
