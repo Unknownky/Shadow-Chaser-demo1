@@ -50,6 +50,7 @@ public class LightInOutStateChangeController : MonoBehaviour
             GameObject StateObject = Instantiate(prefab, collision.transform.position, Quaternion.identity);
             StateObject.transform.parent = collision.transform.parent;
             statesContainer.currentStateID = statesContainer.outWillChangeStateID;
+            playerContainer.SetActive(false);
             Destroy(collision.gameObject);
         }
     }
