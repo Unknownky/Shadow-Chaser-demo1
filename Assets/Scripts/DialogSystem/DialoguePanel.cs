@@ -8,10 +8,10 @@ public class DialoguePanel : MonoBehaviour
 
     //显示对话框时进行的操作
     private void OnEnable() {
-        animator = GetComponent<Animator>();
+        // animator = GetComponent<Animator>();
         //TODO
         Logger.Log("对话框显示");
-        animator?.Play("fadein");
+        // animator?.Play("fadein");
     }
 
     //隐藏对话框时进行的操作

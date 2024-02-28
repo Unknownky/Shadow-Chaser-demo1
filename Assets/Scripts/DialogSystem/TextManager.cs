@@ -46,7 +46,6 @@ public class TextManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-
         result = new List<string>();//初始化
         _dialoguePanelAnimator = _dialoguePanel?.GetComponent<Animator>();
         _characterImageMaterial = _characterImage?.GetComponent<Image>().material;
@@ -104,7 +103,7 @@ public class TextManager : MonoBehaviour
 
     private void ShowDialogueNameAndProcessPanel()
     {
-        string name = result[0].Substring(result[0].IndexOf("<")+2, result[0].IndexOf(">") - 3);
+        string name = result[0].Substring(result[0].IndexOf("<")+2, result[0].IndexOf(">")-2);
         //显示对话人物名字
         _nameText.text = name;//显示人物名字
         //在本游戏中只需要处理主角的图片的alpha值即可
@@ -132,7 +131,7 @@ public class TextManager : MonoBehaviour
 
     private IEnumerator HideDialoguePanel()
     {
-        _dialoguePanelAnimator.Play("fadeout");
+        // _dialoguePanelAnimator?.Play("fadeout");
         yield return new WaitForSecondsRealtime(_fadeTime);
         //隐藏对话框
         _dialoguePanel.SetActive(false);
