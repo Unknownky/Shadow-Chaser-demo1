@@ -16,6 +16,7 @@ public class StateSlot : MonoBehaviour//这个脚本用于保存该槽位的信�
 
     private void Awake()
     {
+        // stateShadow = stateOnThisSlotSlot.
         stateShadowDefaultPosition = stateShadow.transform.position;
     }
 
@@ -39,8 +40,12 @@ public class StateSlot : MonoBehaviour//这个脚本用于保存该槽位的信�
     /// </summary>
     public void SlotOnClicked()
     {
+        if(stateOnThisSlot){
         StatesContainerController.ShowDescription(stateOnThisSlot);
         statesContainer.outWillChangeStateID = stateOnThisSlot.stateID;
+
+
+        }
     }
 
     #region Help Function

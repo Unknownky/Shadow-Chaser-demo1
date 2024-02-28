@@ -26,5 +26,6 @@ public class LightCasterController : MonoBehaviour
     {
         _lightCaster.SetActive(true);
         isCastering = true;
+        PlayerController.ShowDialogBoxPanel();
     }
 }

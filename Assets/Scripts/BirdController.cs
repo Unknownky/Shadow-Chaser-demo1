@@ -27,10 +27,6 @@ public class BirdController : MonoBehaviour, IStateController
     private bool isFacingRight;
 
 
-    public void InitParameters()
-    {
-        throw new System.NotImplementedException();
-    }
 
     private void Update()
     {
@@ -76,7 +72,13 @@ public class BirdController : MonoBehaviour, IStateController
 
     private void OnEnable()
     {
-        GameObject Canvas = GameObject.Find("Canvas");
+        InitParameters();
+    }
+
+    
+    public void InitParameters()
+    {
+        GameObject Canvas = GameObject.Find("BagCanvas");
         statesContainer = Canvas.transform.GetChild(0).gameObject;
     }
 

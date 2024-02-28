@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// 控制雨伞形态
 /// </summary>
-public class UmbrallaController : DragController, IStateController
+public class UmbrallaController :  MonoBehaviour, IStateController
 {
     [Header("PlayerComponent")]
     [SerializeField] private Animator _animator;

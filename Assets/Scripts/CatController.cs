@@ -54,7 +54,7 @@ public class CatController : MonoBehaviour
 
     void InitParameters()
     {
-        //statesContainer = StatesContainerController.containerPanel;
+        statesContainer = GameObject.Find("BagCanvas").transform.GetChild(0).gameObject;
         IdleTime = 0f;
         isFacingRight = true;
     }
@@ -70,9 +70,11 @@ public class CatController : MonoBehaviour
     {
         bool key = Input.GetKey(KeyCode.Tab);
         if (key)
-            statesContainer.SetActive(true);
+        {
+            statesContainer?.SetActive(true);
+        }
         else
-            statesContainer.SetActive(false);
+            statesContainer?.SetActive(false);
     }
 
     private void Movement()
