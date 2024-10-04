@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4725788682982911176}
   - component: {fileID: 4725788682982911177}
   m_Layer: 9
-  m_Name: Light 2D
+  m_Name: CircleLight2D
   m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

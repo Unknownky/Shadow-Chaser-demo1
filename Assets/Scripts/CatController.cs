@@ -35,9 +35,9 @@ public class CatController : MonoBehaviour
     private float horizontal;
     private bool isFacingRight;
     public float IdleTime;
-    public float StretchingTime = 5f;
-    public float LickingTime = 15f;
-    public float Sleep1Time = 23f;
+    public float StretchingTime = 3f;
+    public float LickingTime = 6f;
+    public float Sleep1Time = 8f;
     private bool canStretching = true;
     private bool canLicking = true;
     private bool canSleep1 = true;
