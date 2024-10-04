@@ -1,16 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 /// <summary>
 /// 控制雨伞形态
 /// </summary>
-public class UmbrallaController :  MonoBehaviour, IStateController
+public class UmbrallaController : MonoBehaviour, IStateController
 {
     [Header("PlayerComponent")]
     [SerializeField] private Animator _animator;
     [SerializeField] private Rigidbody2D playerBody2D;
+
+    [SerializeField] private GameObject windPowerEffect;
 
     [Header("Ground Detected")]
     [SerializeField] private LayerMask groundLayer;
@@ -25,6 +30,17 @@ public class UmbrallaController :  MonoBehaviour, IStateController
     [SerializeField] private float speed;
     [SerializeField] private float backGroundScale;
 
+    [SerializeField] private float rotateRate = 2f;
+
+    [SerializeField] private float usingPowerRate = 0.02f;
+
+    public float RotatePower{
+        get => rotatePower;
+        private set => rotatePower = value;
+    }
+
+    private float rotatePower = 0f;
+
 
     private float horizontal;
     private bool isFacingRight;
@@ -37,8 +53,26 @@ public class UmbrallaController :  MonoBehaviour, IStateController
 
     private void Update()
     {
-        Movement();
-        Flip();
+        Movement(); //移动
+        Flip();     //翻转
+        Rotate();   //旋转
+    }
+
+    private void Rotate()
+    {
+        if (Input.GetKey(KeyCode.Q))
+        {
+            transform.Rotate(Vector3.down * rotateRate);
+            UseRotatePower();
+            WindPowerEffect("left");
+
+        }
+        else if (Input.GetKey(KeyCode.E))
+        {
+            transform.Rotate(Vector3.up * rotateRate);
+            UseRotatePower();
+            WindPowerEffect("right");
+        }
     }
 
     public void Movement()
@@ -86,6 +120,28 @@ public class UmbrallaController :  MonoBehaviour, IStateController
         playerBody2D.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
     }
 
+    public void GainRotatePower(float power)
+    {
+        RotatePower += power;
+    }
+
+    public void UseRotatePower()
+    {
+        RotatePower -= usingPowerRate;
+    }
+
+    public void WindPowerEffect(string direction)
+    {
+        windPowerEffect.SetActive(true);
+        if(direction == "left")
+        {
+            windPowerEffect.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if(direction == "right")
+        {
+            windPowerEffect.transform.localScale = new Vector3(1, 1, 1);
+        }
+    }
 
     public void InitParameters()
     {
