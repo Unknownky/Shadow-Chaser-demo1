@@ -2245,7 +2245,7 @@ GameObject:
   - component: {fileID: 1754623885}
   m_Layer: 6
   m_Name: bartable
-  m_TagString: Untagged
+  m_TagString: VirtualPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2357,7 +2357,7 @@ PlatformEffector2D:
     m_Bits: 4294967295
   m_RotationalOffset: 0
   m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
+  m_UseOneWayGrouping: 1
   m_SurfaceArc: 180
   m_UseSideFriction: 0
   m_UseSideBounce: 0
@@ -2452,7 +2452,7 @@ GameObject:
   - component: {fileID: 2107956100}
   m_Layer: 6
   m_Name: VirtualPlaform (1)
-  m_TagString: Untagged
+  m_TagString: VirtualPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2665,6 +2665,10 @@ PrefabInstance:
     - target: {fileID: 3851327522211116170, guid: bb334042f30e9c94f93411f9a911ab74, type: 3}
       propertyPath: m_Name
       value: VirtualPlaform
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851327522211116170, guid: bb334042f30e9c94f93411f9a911ab74, type: 3}
+      propertyPath: m_TagString
+      value: VirtualPlatform
       objectReference: {fileID: 0}
     - target: {fileID: 3851327522211116171, guid: bb334042f30e9c94f93411f9a911ab74, type: 3}
       propertyPath: m_RootOrder

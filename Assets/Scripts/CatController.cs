@@ -44,6 +44,10 @@ public class CatController : MonoBehaviour
     private bool isIdle = true;
     private bool canRecordOnGroundHorizontalPosition;
 
+    private GameObject virtualGroundGameobject;
+
+    private PlatformEffector2D virtualPlatformEffector2D;
+
     private void Awake()//单例模式
     {
         //if (instance != null)
@@ -88,9 +92,17 @@ public class CatController : MonoBehaviour
         {
             playerBody2D.velocity = new Vector2(playerBody2D.velocity.x, playerBody2D.velocity.y * jumpDecrease);
         }
-        if (Input.GetButton("Fire3") && isOnGrounded() && playerBody2D.velocity.x != 0f)
+        if (Input.GetButton("Rush") && isOnGrounded() && playerBody2D.velocity.x != 0f)
         {
             horizontal *= rushAccelerate;
+        }
+        if (Input.GetButtonDown("Down") && isOnGrounded())
+        {
+            //暂时关闭PlatformEffector2D
+            if (virtualGroundGameobject != null)
+            {
+                virtualPlatformEffector2D.rotationalOffset = 180f;
+            }
         }
     }
     private void Flip()
@@ -173,12 +185,36 @@ public class CatController : MonoBehaviour
         {
             playerBody2D.transform.position = new Vector3(playerBody2D.transform.position.x, playerBody2D.transform.position.y - DetectRadius / 2f, 1);
             canRecordOnGroundHorizontalPosition = false;
+            GetVirtualGroundGameobject();
         }
         if (!isOnGrounded())
         {
             canRecordOnGroundHorizontalPosition = true;
         }
     }
+
+    private void GetVirtualGroundGameobject()
+    {
+        if (virtualGroundGameobject != null) //复原原来的PlatformEffector2D
+        {
+            if (virtualGroundGameobject.CompareTag("VirtualPlatform"))
+            {
+                virtualPlatformEffector2D.rotationalOffset = 0f;
+            }
+        }
+        Collider2D collider = Physics2D.OverlapCircle(groundCheck.position, DetectRadius, groundLayer);
+        if (collider != null)
+        {
+            virtualGroundGameobject = collider.gameObject;
+            if (virtualGroundGameobject.CompareTag("VirtualPlatform"))
+            {
+                virtualPlatformEffector2D = virtualGroundGameobject.GetComponent<PlatformEffector2D>();
+                return;
+            }
+        }
+        virtualGroundGameobject = null;
+    }
+
     private bool isOnGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, DetectRadius, groundLayer);

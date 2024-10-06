@@ -10,6 +10,7 @@ TagManager:
   - Bird
   - Container
   - DragItem
+  - VirtualPlatform
   layers:
   - Default
   - TransparentFX
