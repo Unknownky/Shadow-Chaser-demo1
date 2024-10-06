@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Security.Cryptography;
 using UnityEngine;
 
 /// <summary>
@@ -11,9 +12,33 @@ public class LightInOutStateChangeController : MonoBehaviour
     public StatesContainer statesContainer;
     public GameObject playerContainer;
 
+    private GameObject bagCanvas;
+
+    private void Start()
+    {
+        bagCanvas = GameObject.Find("BagCanvas");
+        playerContainer = bagCanvas.transform.GetChild(0).gameObject;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ChangeOutStateToInStateAndInstantiate(collision);
+        if (ComparePlayerOutTag(collision))
+            ChangeOutStateToInStateAndInstantiate(collision);
+    }
+
+    private bool ComparePlayerOutTag(Collider2D collider2D)
+    {
+        bool isPlayerOut =false;
+        foreach (var tag in statesContainer.possessedStates.Select(state => state.name))
+        {
+            if (collider2D.CompareTag(tag))
+            {
+                isPlayerOut = true;
+                break;
+            }
+        }
+        
+        return isPlayerOut;
     }
 
     void ChangeOutStateToInStateAndInstantiate(Collider2D collision)
@@ -34,7 +59,8 @@ public class LightInOutStateChangeController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        ChangeInStateToOutStateAndInstantiate(collision);
+        if(collision.CompareTag("Cat"))
+            ChangeInStateToOutStateAndInstantiate(collision);
     }
 
     void ChangeInStateToOutStateAndInstantiate(Collider2D collision)

@@ -15,7 +15,7 @@ public class UmbrallaController : MonoBehaviour, IStateController
     [SerializeField] private Animator _animator;
     [SerializeField] private Rigidbody2D playerBody2D;
 
-    [SerializeField] private GameObject windPowerEffect;
+    [SerializeField] private GameObject windPowerEffectObject;
 
     [Header("Ground Detected")]
     [SerializeField] private LayerMask groundLayer;
@@ -33,6 +33,11 @@ public class UmbrallaController : MonoBehaviour, IStateController
     [SerializeField] private float rotateRate = 2f;
 
     [SerializeField] private float usingPowerRate = 0.02f;
+
+    //世界坐标朝向右
+    private Vector3 rightRotation= new Vector3(0, 0, 90);
+
+    private Vector3 leftRotation =  new Vector3(0, 0, 90);
 
     public float RotatePower{
         get => rotatePower;
@@ -72,6 +77,10 @@ public class UmbrallaController : MonoBehaviour, IStateController
             transform.Rotate(Vector3.up * rotateRate);
             UseRotatePower();
             WindPowerEffect("right");
+        }
+        else
+        {
+            windPowerEffectObject.SetActive(false);
         }
     }
 
@@ -132,19 +141,25 @@ public class UmbrallaController : MonoBehaviour, IStateController
 
     public void WindPowerEffect(string direction)
     {
-        windPowerEffect.SetActive(true);
+        if(RotatePower <= 0)
+        {
+            windPowerEffectObject.SetActive(false);
+            return;
+        }
+        UseRotatePower();
+        windPowerEffectObject.SetActive(true);
         if(direction == "left")
         {
-            windPowerEffect.transform.localScale = new Vector3(-1, 1, 1);
+            windPowerEffectObject.transform.rotation = Quaternion.Euler(leftRotation);
         }
         else if(direction == "right")
         {
-            windPowerEffect.transform.localScale = new Vector3(1, 1, 1);
+            windPowerEffectObject.transform.rotation = Quaternion.Euler(rightRotation);
         }
     }
 
     public void InitParameters()
     {
-        //statesContainer = StatesContainerController.containerPanel;
+        windPowerEffectObject = transform.GetChild(1).gameObject;
     }
 }
