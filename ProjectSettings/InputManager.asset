@@ -41,10 +41,10 @@ InputManager:
     m_Name: Down
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: down
+    negativeButton: 
     positiveButton: 
     altNegativeButton: 
-    altPositiveButton: mouse 0
+    altPositiveButton: s
     gravity: 1000
     dead: 0.001
     sensitivity: 1000

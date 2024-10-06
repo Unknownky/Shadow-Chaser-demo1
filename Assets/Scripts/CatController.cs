@@ -17,6 +17,8 @@ public class CatController : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float DetectRadius;
 
+    [SerializeField] private bool isOnGround;
+
     [Header("PlayerAttributes")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
@@ -61,6 +63,7 @@ public class CatController : MonoBehaviour
         statesContainer = GameObject.Find("BagCanvas").transform.GetChild(0).gameObject;
         IdleTime = 0f;
         isFacingRight = true;
+        canRecordOnGroundHorizontalPosition = true;
     }
 
     private void Update()
@@ -84,7 +87,7 @@ public class CatController : MonoBehaviour
     private void Movement()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
-        if (Input.GetButtonDown("Jump") && isOnGrounded())
+        if (Input.GetButtonDown("Jump") && isOnGround)
         {
             playerBody2D.velocity = new Vector2(playerBody2D.velocity.x, jumpPower * backGroundScale);
         }
@@ -92,11 +95,11 @@ public class CatController : MonoBehaviour
         {
             playerBody2D.velocity = new Vector2(playerBody2D.velocity.x, playerBody2D.velocity.y * jumpDecrease);
         }
-        if (Input.GetButton("Rush") && isOnGrounded() && playerBody2D.velocity.x != 0f)
+        if (Input.GetButton("Rush") && isOnGround && playerBody2D.velocity.x != 0f)
         {
             horizontal *= rushAccelerate;
         }
-        if (Input.GetButtonDown("Down") && isOnGrounded())
+        if (Input.GetButtonDown("Down") && isOnGround)
         {
             //ÔÝÊ±¹Ø±ÕPlatformEffector2D
             if (virtualGroundGameobject != null)
@@ -166,7 +169,7 @@ public class CatController : MonoBehaviour
             canSleep1 = false;
         }
 
-        _animator.SetBool("isOnGround", isOnGrounded());
+        _animator.SetBool("isOnGround", isOnGround);
         _animator.SetFloat("Speed", Mathf.Abs(playerBody2D.velocity.x));
         _animator.SetFloat("Yspeed", Mathf.Abs(playerBody2D.velocity.y));
         _animator.SetFloat("IdleTime", IdleTime);
@@ -175,19 +178,20 @@ public class CatController : MonoBehaviour
 
     void PhysicalUpdate()
     {
+        isOnGrounded();
         if (playerBody2D.velocity.y <= 0f)
             playerBody2D.gravityScale = fallingGravityScale;
         else
             playerBody2D.gravityScale = commonGravityScale;
         playerBody2D.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
 
-        if (isOnGrounded() && canRecordOnGroundHorizontalPosition)
+        if (isOnGround && canRecordOnGroundHorizontalPosition)
         {
             playerBody2D.transform.position = new Vector3(playerBody2D.transform.position.x, playerBody2D.transform.position.y - DetectRadius / 2f, 1);
             canRecordOnGroundHorizontalPosition = false;
             GetVirtualGroundGameobject();
         }
-        if (!isOnGrounded())
+        if (!isOnGround)
         {
             canRecordOnGroundHorizontalPosition = true;
         }
@@ -215,9 +219,9 @@ public class CatController : MonoBehaviour
         virtualGroundGameobject = null;
     }
 
-    private bool isOnGrounded()
+    private void isOnGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, DetectRadius, groundLayer);
+        isOnGround = Physics2D.OverlapCircle(groundCheck.position, DetectRadius, groundLayer);
     }
 
     private void OnDrawGizmosSelected()
