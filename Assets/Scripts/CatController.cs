@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 /// ¿ØÖÆÃ¨ÐÎÌ¬
 /// </summary>
 
-public class CatController : MonoBehaviour
+public class CatController : MonoBehaviour, IStateController    
 {
     [Header("PlayerComponent")]
     [SerializeField] private Animator _animator;
@@ -58,7 +58,7 @@ public class CatController : MonoBehaviour
         InitParameters();
     }
 
-    void InitParameters()
+    public void InitParameters()
     {
         statesContainer = GameObject.Find("BagCanvas").transform.GetChild(0).gameObject;
         IdleTime = 0f;
@@ -84,7 +84,7 @@ public class CatController : MonoBehaviour
             statesContainer?.SetActive(false);
     }
 
-    private void Movement()
+    public void Movement()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         if (Input.GetButtonDown("Jump") && isOnGround)
@@ -108,7 +108,7 @@ public class CatController : MonoBehaviour
             }
         }
     }
-    private void Flip()
+    public void Flip()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
@@ -149,7 +149,7 @@ public class CatController : MonoBehaviour
 
 
 
-    private void AnimatorUpdate()
+    public void AnimatorUpdate()
     {
         if (IdleTime >= StretchingTime && canStretching)
         {
@@ -176,7 +176,7 @@ public class CatController : MonoBehaviour
         _animator.SetBool("isIdle", isIdle);
     }
 
-    void PhysicalUpdate()
+    public void PhysicalUpdate()
     {
         isOnGrounded();
         if (playerBody2D.velocity.y <= 0f)
@@ -219,9 +219,10 @@ public class CatController : MonoBehaviour
         virtualGroundGameobject = null;
     }
 
-    private void isOnGrounded()
+    public bool isOnGrounded()
     {
         isOnGround = Physics2D.OverlapCircle(groundCheck.position, DetectRadius, groundLayer);
+        return isOnGround;
     }
 
     private void OnDrawGizmosSelected()

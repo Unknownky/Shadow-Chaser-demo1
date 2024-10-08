@@ -12,4 +12,11 @@ public class StatesContainer : ScriptableObject
     public int currentStateID;
     public int defaultOutChangeStateID;
     public int defaultCatStateID;
+
+    public void AddState(State state)
+    {
+        if(possessedStates.Contains(state))
+            return;
+        possessedStates.Add(state);
+    }
 }

@@ -42,8 +42,33 @@ public class StatesContainerController : MonoBehaviour
 
     private void OnEnable()
     {
+        UpdateStateOnSlot();
         ClearTextOnShow();
     }
+
+    private void UpdateStateOnSlot()
+    {
+        //清空所有的slot下的子物体
+        foreach (Transform slot in instance.playerContainer.transform)
+        {
+            foreach (Transform child in slot)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        foreach (var state in instance.statesContainer.possessedStates)
+        {
+            Image stateImage = Instantiate(instance.defaultImagePrefab, instance.playerContainer.transform.GetChild(state.stateID).position, Quaternion.identity);
+            stateImage.gameObject.transform.SetParent(instance.playerContainer.transform.GetChild(state.stateID).gameObject.transform);
+            StateSlot slot = instance.playerContainer.transform.GetChild(state.stateID).gameObject.GetComponent<StateSlot>();//获得对应的slot槽位
+            slot.stateOnThisSlot = state;
+            stateImage.sprite = state.stateSprite;
+            stateImage.transform.localScale = new Vector3(1f, 1f, 1f);
+            if (state.stateID == statesContainer.defaultCatStateID)
+                stateImage.transform.localScale = new Vector3(2f, 2f, 2f);
+        }
+    }
+
     
     void ClearTextOnShow()
     {

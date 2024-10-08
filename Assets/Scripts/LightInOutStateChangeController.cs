@@ -68,10 +68,11 @@ public class LightInOutStateChangeController : MonoBehaviour
         int layer = LayerMask.NameToLayer("Player");//通过layer进行判定和添加
         bool canGennerOutState = false;
         CorrectOutWillChangeState();
-        canGennerOutState = GameObject.FindGameObjectWithTag(statesContainer.possessedStates[statesContainer.outWillChangeStateID].name) == null ? true : false;
+        //从statesContainer中获取对应为outWillChangeStateID的state
+        State OutWillChangeState = statesContainer.possessedStates.Select(state => state).Where(state => state.stateID == statesContainer.outWillChangeStateID).FirstOrDefault();
+        canGennerOutState = GameObject.FindGameObjectWithTag(OutWillChangeState.name) == null ? true : false;
         if (collision.gameObject.layer == layer && canGennerOutState)
         {
-            State OutWillChangeState = statesContainer.possessedStates[statesContainer.outWillChangeStateID];
             GameObject prefab = OutWillChangeState.statePrefab;
             GameObject StateObject = Instantiate(prefab, collision.transform.position, Quaternion.identity);
             StateObject.transform.parent = collision.transform.parent;
