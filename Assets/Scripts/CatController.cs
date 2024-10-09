@@ -187,9 +187,9 @@ public class CatController : MonoBehaviour, IStateController
 
         if (isOnGround && canRecordOnGroundHorizontalPosition)
         {
-            playerBody2D.transform.position = new Vector3(playerBody2D.transform.position.x, playerBody2D.transform.position.y - DetectRadius / 2f, 1);
-            canRecordOnGroundHorizontalPosition = false;
             GetVirtualGroundGameobject();
+            playerBody2D.transform.position = new Vector3(playerBody2D.transform.position.x, playerBody2D.transform.position.y - DetectRadius / 2f, playerBody2D.transform.position.z);
+            canRecordOnGroundHorizontalPosition = false;
         }
         if (!isOnGround)
         {
