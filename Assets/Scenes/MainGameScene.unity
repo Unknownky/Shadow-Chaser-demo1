@@ -7588,6 +7588,26 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2377524416373137177, guid: 00e124344e25d984d9ecaf8b2c751aac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377524416373137182, guid: 00e124344e25d984d9ecaf8b2c751aac, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -757
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377524416373137182, guid: 00e124344e25d984d9ecaf8b2c751aac, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 345
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377524416373137183, guid: 00e124344e25d984d9ecaf8b2c751aac, type: 3}
+      propertyPath: m_Text
+      value: "\u6309\u4E92\u52A8\u952E\u5F00\u7A97"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377524416562475247, guid: 00e124344e25d984d9ecaf8b2c751aac, type: 3}
+      propertyPath: interactKey
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 2377524416629438286, guid: 00e124344e25d984d9ecaf8b2c751aac, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
       value: 7
