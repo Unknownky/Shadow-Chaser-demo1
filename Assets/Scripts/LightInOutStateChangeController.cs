@@ -23,7 +23,10 @@ public class LightInOutStateChangeController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (ComparePlayerOutTag(collision))
+        {
             ChangeOutStateToInStateAndInstantiate(collision);
+            Debug.Log("Player ENter Light");
+        }
     }
 
     private bool ComparePlayerOutTag(Collider2D collider2D)
@@ -60,7 +63,10 @@ public class LightInOutStateChangeController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.CompareTag("Cat"))
+        {
             ChangeInStateToOutStateAndInstantiate(collision);
+            Debug.Log("Player Exit Light");
+        }
     }
 
     void ChangeInStateToOutStateAndInstantiate(Collider2D collision)
