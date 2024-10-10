@@ -8,12 +8,17 @@ public class DialogDirector : MonoBehaviour
 
     string text = "<#小明>你好呀，今天的天气真好！<break><#小李>是呀，这正是散步的好日子<rain><break><#小明>……<break><#小李>……<finish>";
 
-    TextAsset textAsset;
 
+    public Dialogue dialogue;
+
+    private void Start(){
+        textManager = TextManager.Instance;
+        text = dialogue.dialogue;   
+    }
     private void Update(){
         if(Input.GetKeyDown(KeyCode.Space)){
         
-            TextManager.Instance.StartDialogueSystem(textAsset.text);
+            textManager.StartDialogueSystem(text);
         }
 
     }
