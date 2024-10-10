@@ -11,7 +11,6 @@ public class WindowBar : MonoBehaviour
 
     public GameObject constraintWindowOpenLight;
 
-    [Tooltip("进行互动的按键")]public KeyCode interactKey = KeyCode.S;
 
     private void Start() {
         windowInfo.SetActive(false);
@@ -32,7 +31,7 @@ public class WindowBar : MonoBehaviour
     }
 
     private void Update() {
-        if(Input.GetKeyDown(interactKey) && windowInfo.activeSelf) {
+        if(Input.GetKeyDown(GameManager.instance.interactKey) && windowInfo.activeSelf) {
             isWindowOpen = !isWindowOpen;
             Debug.Log("Window is open: " + isWindowOpen);
             constraintWindowOpenLight.SetActive(isWindowOpen);

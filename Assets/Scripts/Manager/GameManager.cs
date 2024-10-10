@@ -7,6 +7,13 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public bool inLight = false;
 
+    public KeyCode interactKey = KeyCode.E;
+
+    #region ParameterForDialogSystem
+    public GameObject interactInfoObject;
+
+    #endregion
+
     private void Awake()
     {
         if (instance == null)
@@ -14,6 +21,16 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         HideVirtualPlatform();
+    }
+
+    private void Start() {
+        InitDialogSystemParameters();
+    }
+
+    private void InitDialogSystemParameters()
+    {
+        interactInfoObject = GameObject.Find("InteractInfoObject");
+        interactInfoObject?.SetActive(false);
     }
 
     private void HideVirtualPlatform()

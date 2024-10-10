@@ -59,6 +59,10 @@ public class TextManager : MonoBehaviour
     /// </summary>
     public void StartDialogueSystem(string text)
     {
+        if (string.IsNullOrEmpty(text))
+        {
+            return;
+        }
         PauseGame();//暂停游戏
         AccordTextProduceResult(text);//处理文本
         ShowDialoguePanel();//显示对话框
