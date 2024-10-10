@@ -50,7 +50,7 @@ public class DialogDirector : MonoBehaviour
         }
         Logger.Log("No dialogue found");
         text = "";
-    }
+    } 
 
     #region 暴露给外部的方法
     public void StartDialogue(string dialogueName)

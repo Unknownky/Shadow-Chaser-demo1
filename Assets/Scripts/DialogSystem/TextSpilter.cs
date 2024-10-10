@@ -18,6 +18,10 @@ public class TextSpilter
         for (int i = 0; i < splitText.Length; i++)
         {
             string sentence = splitText[i];
+            //去掉开头的\r和末尾的\r
+            sentence = sentence.Trim('\r');
+            //去掉开头的\n和末尾的\n
+            sentence = sentence.Trim('\n');
             if (i < splitText.Length - 1)
             {
                 sentence += "<break>";
