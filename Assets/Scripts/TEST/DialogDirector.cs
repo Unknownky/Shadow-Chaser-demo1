@@ -44,10 +44,11 @@ public class DialogDirector : MonoBehaviour
             if (item.dialogueName == dialogueName)
             {
                 text = item.dialogue;
-                Logger.Log("text: " + text);
+                Logger.Log("Has search the text: " + text);
                 return;
             }
         }
+        Logger.Log("No dialogue found");
         text = "";
     }
 

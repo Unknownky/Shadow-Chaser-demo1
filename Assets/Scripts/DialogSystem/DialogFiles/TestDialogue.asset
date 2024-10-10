@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f89dc7bf2482841b19a528c5b401d6, type: 3}
   m_Name: TestDialogue
   m_EditorClassIdentifier: 
-  dialogueName: Text
+  dialogueName: Test
   dialogue: "<#\u5C0F\u660E>\u4F60\u597D\u5440\uFF0C\u4ECA\u5929\u7684\u5929\u6C14\u771F\u597D\uFF01<break><#\u5C0F\u674E>\u662F\u5440\uFF0C\u8FD9\u6B63\u662F\u6563\u6B65\u7684\u597D\u65E5\u5B50<rain><break><#\u5C0F\u660E>\u2026\u2026<break><#\u5C0F\u674E>\u2026\u2026<finish>"
