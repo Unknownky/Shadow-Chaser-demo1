@@ -2180,6 +2180,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 148487251, guid: b149f5c544e94a94c85ede78a3d17530, type: 3}
+      propertyPath: interactInfoOffset.y
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4515365880538910594, guid: b149f5c544e94a94c85ede78a3d17530, type: 3}
       propertyPath: m_RootOrder
       value: 1

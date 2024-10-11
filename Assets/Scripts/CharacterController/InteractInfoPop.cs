@@ -8,11 +8,16 @@ public class InteractInfoPop : MonoBehaviour
 
     public string dialogueNameForShow;
 
+    public Vector3 interactInfoOffset = new Vector3(0, 0.5f, 0);    
 
     private void Update() {
         if (Input.GetKeyDown(GameManager.instance.interactKey)) {
-            HideInteractInfo();
+            // HideInteractInfo();
             StartDialogueSystem();
+        }
+        if(interactInfoObject.activeSelf){
+            //向上偏移一点
+            interactInfoObject.transform.position = transform.position + interactInfoOffset;
         }
     }
     public void ShowInteractInfo(string dialogueName)
