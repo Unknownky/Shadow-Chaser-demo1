@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7316711422972150574}
   - component: {fileID: 7316711422972150573}
   - component: {fileID: 7316711422972150572}
+  - component: {fileID: 6828055304520657018}
   m_Layer: 0
   m_Name: SpeakPoint
   m_TagString: Untagged
@@ -72,3 +73,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueName: Test
+--- !u!114 &6828055304520657018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7316711422972150575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd33b2bdd68a5124a87a1a5c218bf241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matchedCarryObject: {fileID: 0}
+  freezeRotation: 1
+  useAutoMass: 1
+  gravityScale: 0.5

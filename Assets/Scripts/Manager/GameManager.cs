@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public KeyCode interactKey = KeyCode.E;
 
+    public KeyCode carryKey = KeyCode.Q;
+
     #region ParameterForDialogSystem
     public GameObject interactInfoObject;
 

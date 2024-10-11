@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4515365880538910622}
   - component: {fileID: 440326434}
   - component: {fileID: 148487251}
+  - component: {fileID: 1529582452}
   m_Layer: 8
   m_Name: Cat
   m_TagString: Cat
@@ -232,5 +233,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8545c2fcc7bfb0743a3aee4849557adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactInfoObject: {fileID: 0}
   dialogueNameForShow: 
+  interactInfoOffset: {x: 0, y: 0.4, z: 0}
+--- !u!114 &1529582452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4515365880538910596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6eeef141b18b64e9703ef8f8a18a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carryObject: {fileID: 0}
+  carryOverOffset: {x: 0, y: 0.01, z: 0}
+  isCarrying: 0

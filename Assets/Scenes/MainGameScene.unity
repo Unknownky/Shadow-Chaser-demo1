@@ -729,6 +729,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1620581480}
     m_Modifications:
+    - target: {fileID: 6828055304520657018, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: matchedCarryObject
+      value: 
+      objectReference: {fileID: 438907176}
     - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
       propertyPath: dialogueName
       value: Candle
@@ -1068,6 +1072,11 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &438907176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 390456860282783827, guid: ae7eed29be508c24984a98627db9c41d, type: 3}
+  m_PrefabInstance: {fileID: 681071502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &442962889
 GameObject:
   m_ObjectHideFlags: 0
@@ -2062,6 +2071,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6265670936862214329, guid: ae7eed29be508c24984a98627db9c41d, type: 3}
   m_PrefabInstance: {fileID: 681071502}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &681071505
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438907176}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &707785123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2180,10 +2210,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 148487251, guid: b149f5c544e94a94c85ede78a3d17530, type: 3}
-      propertyPath: interactInfoOffset.y
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 4515365880538910594, guid: b149f5c544e94a94c85ede78a3d17530, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4335,6 +4361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inLight: 0
   interactKey: 101
+  carryKey: 113
   interactInfoObject: {fileID: 0}
 --- !u!4 &1289587040 stripped
 Transform:
