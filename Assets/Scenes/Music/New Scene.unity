@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorsObjects: []
+  audioProcessor: {fileID: 0}
 --- !u!1 &1445288325
 GameObject:
   m_ObjectHideFlags: 0

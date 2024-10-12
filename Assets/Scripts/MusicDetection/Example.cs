@@ -17,19 +17,24 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.Sqlite;
 
 public class Example : MonoBehaviour
 {
     public List<GameObject> colorsObjects;
     private int lastIndex = -1;
 
+    public AudioProcessor audioProcessor;
+
+
     void Start()
     {
         //Select the instance of AudioProcessor and pass a reference
         //to this object
-        AudioProcessor processor = FindObjectOfType<AudioProcessor>();
-        processor.onBeat.AddListener(onOnbeatDetected);
-        processor.onSpectrum.AddListener(onSpectrum);
+        audioProcessor = FindObjectOfType<AudioProcessor>();
+        audioProcessor.onBeat.AddListener(onOnbeatDetected);
+        audioProcessor.onSpectrum.AddListener(onSpectrum);
+
         //将所有的孙子物体添加为colorsObjects
         foreach (Transform child in transform)
         {
