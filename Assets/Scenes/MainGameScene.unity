@@ -1498,6 +1498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statesContainer: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
   playerContainer: {fileID: 0}
+  lightCheck: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4359,10 +4360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963418ffcfac18f44af5bd977955909a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inLight: 0
   interactKey: 101
   carryKey: 113
   interactInfoObject: {fileID: 0}
+  inLight: 1
 --- !u!4 &1289587040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6265670936862214329, guid: 2e994115e34115a4595fee8340d52ce1, type: 3}

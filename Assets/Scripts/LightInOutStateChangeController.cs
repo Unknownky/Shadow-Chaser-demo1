@@ -14,6 +14,8 @@ public class LightInOutStateChangeController : MonoBehaviour
 
     private GameObject bagCanvas;
 
+    public bool lightCheck = false; //检测是否进入灯光
+
     private void Start()
     {
         bagCanvas = GameObject.Find("BagCanvas");
@@ -24,8 +26,10 @@ public class LightInOutStateChangeController : MonoBehaviour
     {
         if (ComparePlayerOutTag(collision))
         {
-            ChangeOutStateToInStateAndInstantiate(collision);
-            Debug.Log("Player ENter Light");
+            lightCheck = true;
+            Logger.Log("Player ENter Light");
+            if(GameManager.instance.NeedTransition())
+                ChangeOutStateToInStateAndInstantiate(collision);
         }
     }
 
@@ -64,8 +68,10 @@ public class LightInOutStateChangeController : MonoBehaviour
     {
         if(collision.CompareTag("Cat"))
         {
-            ChangeInStateToOutStateAndInstantiate(collision);
-            Debug.Log("Player Exit Light");
+            lightCheck = false;
+            Logger.Log("Player Exit Light");
+            if(GameManager.instance.NeedTransition())
+                ChangeInStateToOutStateAndInstantiate(collision);
         }
     }
 
