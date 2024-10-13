@@ -28,8 +28,6 @@ public class AudioProcessor : MonoBehaviour
     public int bufferSize = 1024;
     // FFT 大小
 
-    public float currentSongBPM = 120f;
-
     private int samplingRate = 44100;
     // FFT 采样频率
 
@@ -114,8 +112,6 @@ public class AudioProcessor : MonoBehaviour
         auco = new Autoco (maxlag, decay, framePeriod, getBandWidth ());
 
         lastT = getCurrentTimeMillis ();
-
-        currentSongBPM = auco.avgBpm ();
 
     }
 

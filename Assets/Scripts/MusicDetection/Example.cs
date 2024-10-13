@@ -33,6 +33,8 @@ public class Example : MonoBehaviour
 
     public float currentSongBPM = 80f;
 
+    public AudioSource audioSource;
+
     void Start()
     {
         //Select the instance of AudioProcessor and pass a reference
@@ -52,7 +54,7 @@ public class Example : MonoBehaviour
             }
         }
 
-        Debug.Log("Current song BPM: " + audioProcessor.currentSongBPM);
+        currentSongBPM = UniBpmAnalyzer.AnalyzeBpm(audioSource.clip);
         SetVideoSpeed(currentSongBPM);
     }
 
@@ -74,7 +76,6 @@ public class Example : MonoBehaviour
         Debug.Log("Beat!!!");
         if (colorSwitch)
             SwitchColors();
-        Debug.Log("BPM: " + currentSongBPM);
     }
 
     //This event will be called every frame while music is playing
