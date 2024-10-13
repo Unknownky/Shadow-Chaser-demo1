@@ -31,7 +31,7 @@ public class Example : MonoBehaviour
 
     public bool colorSwitch = true;
 
-    public float currentSongBPM => audioProcessor.currentSongBPM;
+    public float currentSongBPM = 80f;
 
     void Start()
     {
@@ -52,7 +52,7 @@ public class Example : MonoBehaviour
             }
         }
 
-        Debug.Log("Current song BPM: " + currentSongBPM);
+        Debug.Log("Current song BPM: " + audioProcessor.currentSongBPM);
         SetVideoSpeed(currentSongBPM);
     }
 
@@ -63,7 +63,7 @@ public class Example : MonoBehaviour
 
     private float GetVideoSpeed(float bpm)
     {
-        return bpm / (float)133.7827;
+        return bpm / (float)80f;
     }
 
     //this event will be called every time a beat is detected.

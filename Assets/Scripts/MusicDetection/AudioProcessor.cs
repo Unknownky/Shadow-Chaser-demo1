@@ -236,7 +236,7 @@ public class AudioProcessor : MonoBehaviour
             if (++now == colmax)
                 now = 0;
 
-            Debug.Log(System.Math.Round(60 / (tempopd * framePeriod)) + " bpm");
+            // Debug.Log(System.Math.Round(60 / (tempopd * framePeriod)) + " bpm");
             // Debug.Log(System.Math.Round(auco.avgBpm()) + " bpm");
         }
     }
@@ -392,7 +392,7 @@ public class AudioProcessor : MonoBehaviour
             for (int i = 1; i < bpms.Length; ++i) {
                 sum += bpms [i];
             }
-            return sum / del_length;
+            return sum / (del_length - 1);
         }
     }
 }
