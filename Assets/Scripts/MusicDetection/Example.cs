@@ -18,6 +18,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting.Dependencies.Sqlite;
+using UnityEngine.Video;
 
 public class Example : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class Example : MonoBehaviour
 
     public AudioProcessor audioProcessor;
 
+    public VideoPlayer videoPlayer;
+
+    public bool colorSwitch = true;
+
+    public float currentSongBPM => audioProcessor.currentSongBPM;
 
     void Start()
     {
@@ -35,6 +41,8 @@ public class Example : MonoBehaviour
         audioProcessor.onBeat.AddListener(onOnbeatDetected);
         audioProcessor.onSpectrum.AddListener(onSpectrum);
 
+        videoPlayer = FindObjectOfType<VideoPlayer>();
+
         //将所有的孙子物体添加为colorsObjects
         foreach (Transform child in transform)
         {
@@ -43,6 +51,19 @@ public class Example : MonoBehaviour
                 colorsObjects.Add(grandchild.gameObject);
             }
         }
+
+        Debug.Log("Current song BPM: " + currentSongBPM);
+        SetVideoSpeed(currentSongBPM);
+    }
+
+    public void SetVideoSpeed(float bpm)
+    {
+        videoPlayer.playbackSpeed = GetVideoSpeed(bpm);
+    }
+
+    private float GetVideoSpeed(float bpm)
+    {
+        return bpm / (float)133.7827;
     }
 
     //this event will be called every time a beat is detected.
@@ -51,7 +72,9 @@ public class Example : MonoBehaviour
     void onOnbeatDetected()
     {
         Debug.Log("Beat!!!");
-        SwitchColors();
+        if (colorSwitch)
+            SwitchColors();
+        Debug.Log("BPM: " + currentSongBPM);
     }
 
     //This event will be called every frame while music is playing
