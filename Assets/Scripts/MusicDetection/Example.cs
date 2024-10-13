@@ -73,7 +73,6 @@ public class Example : MonoBehaviour
     //to adjust the sensitivity
     void onOnbeatDetected()
     {
-        Debug.Log("Beat!!!");
         if (colorSwitch)
             SwitchColors();
     }
