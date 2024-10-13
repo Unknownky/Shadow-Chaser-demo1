@@ -35,6 +35,8 @@ public class Example : MonoBehaviour
 
     public AudioSource audioSource;
 
+    public float beatRate = 1f;
+
     void Start()
     {
         //Select the instance of AudioProcessor and pass a reference
@@ -55,6 +57,7 @@ public class Example : MonoBehaviour
         }
 
         currentSongBPM = UniBpmAnalyzer.AnalyzeBpm(audioSource.clip);
+        currentSongBPM *= beatRate;
         SetVideoSpeed(currentSongBPM);
     }
 

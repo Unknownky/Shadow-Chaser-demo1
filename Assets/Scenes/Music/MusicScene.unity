@@ -403,6 +403,7 @@ MonoBehaviour:
   colorSwitch: 0
   currentSongBPM: 126
   audioSource: {fileID: 1458443597}
+  beatRate: 0.5
 --- !u!328 &886190507
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -752,7 +753,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f149560ca285eef4c8d1c017556c69b8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 149316529c9b61747bb8cb452e4abeb4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
