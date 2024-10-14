@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+    public StatesContainer statesContainer;
 
     public KeyCode interactKey = KeyCode.E;
 
@@ -58,6 +61,22 @@ public class GameManager : MonoBehaviour
         return lightCheckTemp != GetLightCheck();
     }
 
+    
+    public bool ComparePlayerTag(Collider2D collider2D)
+    {
+        bool isPlayer = false;
+        foreach (var tag in statesContainer.possessedStates.Select(state => state.name))
+        {
+            if (collider2D.CompareTag(tag))
+            {
+                isPlayer = true;
+                break;
+            }
+        }
+        return isPlayer;
+    }
+
+
     #endregion
     private bool GetLightCheck()
     {
@@ -84,4 +103,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+
 }
