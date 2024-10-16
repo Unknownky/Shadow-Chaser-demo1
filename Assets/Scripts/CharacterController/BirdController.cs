@@ -20,12 +20,14 @@ public class BirdController : MonoBehaviour, IStateController
     [Header("PlayerAttributes")]
     [SerializeField] private float force;
     [SerializeField] private float speed;
+    [SerializeField] private float flySpeed;
     [SerializeField] private float backGroundScale;
+
+    [SerializeField] private float flyForce = 1;
 
 
     private float horizontal;
     private bool isFacingRight;
-
 
 
     private void Update()
@@ -59,6 +61,8 @@ public class BirdController : MonoBehaviour, IStateController
     public void Movement()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
+        if (Input.GetMouseButtonDown(0))//????????
+            playerBody2D.velocity = Vector2.up * flyForce;//?????????
     }
 
     public void StatesChange()
@@ -93,6 +97,10 @@ public class BirdController : MonoBehaviour, IStateController
 
     public void PhysicalUpdate()
     {
-        playerBody2D.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
+        if(isOnGrounded())
+            playerBody2D.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
+        else
+            playerBody2D.velocity = new Vector2(horizontal * flySpeed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
     }
+
 }
