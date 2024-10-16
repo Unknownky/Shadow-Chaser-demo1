@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 4515365880538910592}
   - component: {fileID: 4515365880538910593}
   - component: {fileID: 4515365880538910622}
-  - component: {fileID: 440326434}
   - component: {fileID: 148487251}
   - component: {fileID: 1529582452}
+  - component: {fileID: 5624298694378334435}
   m_Layer: 8
   m_Name: Cat
   m_TagString: Cat
@@ -195,32 +195,6 @@ MonoBehaviour:
   StretchingTime: 5
   LickingTime: 15
   Sleep1Time: 23
---- !u!61 &440326434
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4515365880538910596}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: fa5ef8622ffa40b4a9d19eac0879381e, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.025163628, y: -0.0010484606}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.5}
-    newSize: {x: 0.5, y: 0.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.15609719, y: 0.14141858}
-  m_EdgeRadius: 0
 --- !u!114 &148487251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,3 +224,19 @@ MonoBehaviour:
   carryObject: {fileID: 0}
   carryOverOffset: {x: 0, y: 0.01, z: 0}
   isCarrying: 0
+--- !u!70 &5624298694378334435
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4515365880538910596}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: fa5ef8622ffa40b4a9d19eac0879381e, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.012543678, y: 0.008}
+  m_Size: {x: 0.16, y: 0.04}
+  m_Direction: 0
