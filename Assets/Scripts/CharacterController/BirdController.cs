@@ -21,9 +21,10 @@ public class BirdController : MonoBehaviour, IStateController
     [SerializeField] private float force;
     [SerializeField] private float speed;
     [SerializeField] private float flySpeed;
+    [SerializeField] private float diveFlySpeed = 2f;
     [SerializeField] private float backGroundScale;
 
-    [SerializeField] private float flyForce = 1;
+    [SerializeField] private float flyForce = 1f;
 
 
     private float horizontal;
@@ -79,7 +80,7 @@ public class BirdController : MonoBehaviour, IStateController
         InitParameters();
     }
 
-    
+
     public void InitParameters()
     {
         GameObject Canvas = GameObject.Find("BagCanvas");
@@ -97,10 +98,22 @@ public class BirdController : MonoBehaviour, IStateController
 
     public void PhysicalUpdate()
     {
-        if(isOnGrounded())
+        if (isOnGrounded())
+        {
             playerBody2D.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
-        else
-            playerBody2D.velocity = new Vector2(horizontal * flySpeed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
-    }
+        }
 
+        else
+        {
+            //????????
+            if (playerBody2D.velocity.y < 0)
+            {
+                playerBody2D.velocity = new Vector2(horizontal * diveFlySpeed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
+            }
+            else
+            {
+                playerBody2D.velocity = new Vector2(horizontal * flySpeed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
+            }
+        }
+    }
 }
