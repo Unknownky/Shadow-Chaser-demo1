@@ -2085,6 +2085,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1322701872}
     m_Modifications:
+    - target: {fileID: 1892470146, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
+      propertyPath: m_Size.y
+      value: 0.69487476
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892470146, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.17735624
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892470146, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892470147, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
+      propertyPath: stayedForOpenTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892470147, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
+      propertyPath: thingForOpen.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892470147, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
+      propertyPath: thingForOpen.Array.data[0]
+      value: 
+      objectReference: {fileID: 1719500904}
+    - target: {fileID: 1892470147, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
+      propertyPath: thingForOpen.Array.data[1]
+      value: 
+      objectReference: {fileID: 1807956745}
     - target: {fileID: 390456860282783827, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
       propertyPath: m_Name
       value: PF Dungeon Props - Fireplace 01
@@ -2092,14 +2120,6 @@ PrefabInstance:
     - target: {fileID: 6265670936862214329, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6265670936862214329, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6265670936862214329, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6265670936862214329, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2141,6 +2161,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6462994255522126432, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
 --- !u!4 &677071383 stripped
@@ -2158,6 +2182,10 @@ PrefabInstance:
     - target: {fileID: 390456860282783827, guid: ae7eed29be508c24984a98627db9c41d, type: 3}
       propertyPath: m_Name
       value: PF Dungeon Props - Candlestick 01
+      objectReference: {fileID: 0}
+    - target: {fileID: 390456860282783827, guid: ae7eed29be508c24984a98627db9c41d, type: 3}
+      propertyPath: m_TagString
+      value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 3600666482606540065, guid: ae7eed29be508c24984a98627db9c41d, type: 3}
       propertyPath: m_SortingLayer
@@ -2260,7 +2288,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!1 &707785123
@@ -5939,6 +5967,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 745621268251903253, guid: b32bc39b3f6c9c54bbfdcf22b8a14d97, type: 3}
   m_PrefabInstance: {fileID: 1709997422}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1719500904 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6462994255522126432, guid: fd4e7a4f0c991f24fae1dceb9059ed54, type: 3}
+  m_PrefabInstance: {fileID: 677071382}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1724266937 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6265670936862214329, guid: a7e2cb0545609ed45875fe4a36efed55, type: 3}
@@ -6345,6 +6378,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bc0d8a3425b1cc4aa839a3d1b22bcd7, type: 3}
+--- !u!1 &1807956745 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 745621268251903250, guid: b32bc39b3f6c9c54bbfdcf22b8a14d97, type: 3}
+  m_PrefabInstance: {fileID: 1709997422}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1825227592 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9072807208709021889, guid: a886758f11634694d939f1bd79f34ee5, type: 3}
