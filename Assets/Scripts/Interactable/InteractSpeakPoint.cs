@@ -12,7 +12,7 @@ public class InteractSpeakPoint : MonoBehaviour
 
     private InteractInfoPop interactInfoPop;
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Cat")) {
+        if (GameManager.instance.ComparePlayerTag(other)) {
             Logger.Log("Cat entered speak point");
             interactInfoPop = other.GetComponent<InteractInfoPop>();
             interactInfoPop.ShowInteractInfo(dialogueName);
@@ -20,7 +20,7 @@ public class InteractSpeakPoint : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.CompareTag("Cat")) {
+        if (GameManager.instance.ComparePlayerTag(other)) {
             Logger.Log("Cat exited speak point");
             interactInfoPop.HideInteractInfo();
         }

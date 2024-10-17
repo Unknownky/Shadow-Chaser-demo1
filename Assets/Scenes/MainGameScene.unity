@@ -2320,7 +2320,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
       propertyPath: dialogueName
-      value: LookForBird
+      value: BirdHome
       objectReference: {fileID: 0}
     - target: {fileID: 7316711422972150573, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
       propertyPath: m_Size.x
@@ -8203,7 +8203,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
       propertyPath: dialogueName
-      value: LookForBird
+      value: PotBird
       objectReference: {fileID: 0}
     - target: {fileID: 7316711422972150573, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
       propertyPath: m_Size.x
@@ -8959,7 +8959,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
       propertyPath: dialogueName
-      value: LookForBird
+      value: CandleSpeak
       objectReference: {fileID: 0}
     - target: {fileID: 7316711422972150573, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
       propertyPath: m_Size.x
