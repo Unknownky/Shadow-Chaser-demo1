@@ -9,32 +9,47 @@ public class WindowBar : MonoBehaviour
 
     public GameObject windowInfo;
 
-    public GameObject constraintWindowOpenLight;
+    public List<GameObject> constraintWindowOpenThings;
 
 
-    private void Start() {
+    private void Start()
+    {
         windowInfo.SetActive(false);
-        constraintWindowOpenLight.SetActive(isWindowOpen);
+        ConstraintWindowOpenThingsSetActive(isWindowOpen);
     }
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Cat")) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Cat"))
+        {
             Debug.Log("Cat entered window bar");
             windowInfo.SetActive(true);
         }
-    }    
+    }
 
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other.CompareTag("Cat")) {
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Cat"))
+        {
             Debug.Log("Cat exited window bar");
             windowInfo.SetActive(false);
         }
     }
 
-    private void Update() {
-        if(Input.GetKeyDown(GameManager.instance.interactKey) && windowInfo.activeSelf) {
+    private void Update()
+    {
+        if (Input.GetKeyDown(GameManager.instance.interactKey) && windowInfo.activeSelf)
+        {
             isWindowOpen = !isWindowOpen;
             Debug.Log("Window is open: " + isWindowOpen);
-            constraintWindowOpenLight.SetActive(isWindowOpen);
+            ConstraintWindowOpenThingsSetActive(isWindowOpen);
+        }
+    }
+
+    private void ConstraintWindowOpenThingsSetActive(bool active)
+    {
+        foreach (GameObject constraintWindowOpenThing in constraintWindowOpenThings)
+        {
+            constraintWindowOpenThing.SetActive(active);
         }
     }
 }
