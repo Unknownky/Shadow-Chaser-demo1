@@ -30,7 +30,7 @@ public class TextManager : MonoBehaviour
 
     private Animator _dialoguePanelAnimator;//对话框的动画控制器
 
-    private float _fadeTime = 0.8f;//对话框淡入淡出的时间
+    [Tooltip("对话框消失的时间")]public float _fadeTime = 0.8f;//对话框淡入淡出的时间
 
     //获取人物的图片的材质来改变其alpha值
     private Material _characterImageMaterial;

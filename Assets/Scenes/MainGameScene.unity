@@ -3676,6 +3676,7 @@ MonoBehaviour:
   _characterImage: {fileID: 805004300}
   characterName: "\u6211"
   characterSameRGB: 150
+  _fadeTime: 0.1
 --- !u!4 &795135288
 Transform:
   m_ObjectHideFlags: 0
