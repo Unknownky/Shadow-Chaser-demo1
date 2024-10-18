@@ -44,6 +44,13 @@ public class InteractSpeakPoint : MonoBehaviour
                 onSpeakPointTriggered = new List<UnityEventWrapper>();
             }
         }
+        if (extraConditionDetection)
+        {
+            if (eventConditions.Count != dalogueNameQueue.Count)
+            {
+                Logger.Log("eventConditions and dalogueNameQueue should have the same length");
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -70,9 +77,12 @@ public class InteractSpeakPoint : MonoBehaviour
                 dialogueIndex = -1;
                 for (int i = 0; i < detectionTagQueue.Count; i++)
                 {
-                    if (GameManager.instance.StatesContainerDetect(detectionTagQueue[i])&&ExtraConditionDetection(eventConditions[i]))
+                    if (GameManager.instance.StatesContainerDetect(detectionTagQueue[i]))
                     {
-                        dialogueIndex += 1;
+                        if(extraConditionDetection&&ExtraConditionDetection(eventConditions[i]))
+                            dialogueIndex += 1;
+                        else if(!extraConditionDetection)
+                            dialogueIndex += 1;
                     }
                     else
                         break;
