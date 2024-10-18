@@ -11185,7 +11185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7824626643100995726, guid: 10066476c48873043aee194d43cff60d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.978
+      value: 3.001
       objectReference: {fileID: 0}
     - target: {fileID: 7824626643100995726, guid: 10066476c48873043aee194d43cff60d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11225,11 +11225,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7824626643100995728, guid: 10066476c48873043aee194d43cff60d, type: 3}
       propertyPath: m_Size.y
-      value: 0.07760358
+      value: 0.03051591
       objectReference: {fileID: 0}
     - target: {fileID: 7824626643100995728, guid: 10066476c48873043aee194d43cff60d, type: 3}
       propertyPath: m_Offset.y
-      value: -0.16325557
+      value: -0.16521752
       objectReference: {fileID: 0}
     - target: {fileID: 7824626643100995729, guid: 10066476c48873043aee194d43cff60d, type: 3}
       propertyPath: switchCamera1

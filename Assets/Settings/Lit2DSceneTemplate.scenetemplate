@@ -320,6 +320,8 @@ MonoBehaviour:
     instantiationMode: 0
   - dependency: {fileID: 390456860282783827, guid: a8ffb2739b2dee94b9738c3383c96cf9, type: 3}
     instantiationMode: 0
+  - dependency: {fileID: 6200000, guid: 5d97c55b5dbd6e846a8bea32467965bd, type: 2}
+    instantiationMode: 0
   - dependency: {fileID: 9100000, guid: d9cd8f3734dd3b945825c5cc7886fd32, type: 2}
     instantiationMode: 0
   - dependency: {fileID: 11400000, guid: 69afe736375766f459b02cc44129c982, type: 2}
