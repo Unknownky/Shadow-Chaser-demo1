@@ -11,7 +11,7 @@ public class InteractInfoPop : MonoBehaviour
     public Vector3 interactInfoOffset = new Vector3(0, 0.5f, 0);    
 
     private void Update() {
-        if (Input.GetKeyDown(GameManager.instance.interactKey)&&interactInfoObject.activeSelf) {
+        if (Input.GetKeyDown(GameManager.instance.interactKey)&&interactInfoObject.activeSelf&&Time.timeScale!=0) {
             // HideInteractInfo();
             StartDialogueSystem();
         }

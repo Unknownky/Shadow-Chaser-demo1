@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DialogDirector : MonoBehaviour
 {
@@ -13,8 +14,10 @@ public class DialogDirector : MonoBehaviour
 
     public Dialogue textDialogue;
 
+    public bool oneDialogueOn = false;
 
-    private void Awake(){
+    private void Awake()
+    {
         if (Instance == null)
         {
             Instance = this;
@@ -25,13 +28,16 @@ public class DialogDirector : MonoBehaviour
         }
     }
 
-    private void Start(){
+    private void Start()
+    {
         textManager = TextManager.Instance;
-        text = textDialogue.dialogue;   
+        text = textDialogue.dialogue;
     }
-    private void Update(){
-        if(Input.GetKeyDown(KeyCode.T)){
-            
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+
             textManager.StartDialogueSystem(text);
         }
 
@@ -45,12 +51,13 @@ public class DialogDirector : MonoBehaviour
             {
                 text = item.dialogue;
                 Logger.Log("Has search the text: " + text);
+                oneDialogueOn = true;
                 return;
             }
         }
         Logger.Log("No dialogue found");
         text = "";
-    } 
+    }
 
     #region 暴露给外部的方法
     public void StartDialogue(string dialogueName)
@@ -59,6 +66,10 @@ public class DialogDirector : MonoBehaviour
         textManager.StartDialogueSystem(text);
     }
 
+    public void InjectDialogueEndEvent(UnityEvent unityEvent)
+    {
+        textManager.dialogueEndEvent = unityEvent;
+    }
     #endregion
 
     [UnityEditor.MenuItem("Developer/Show All DialoguesName")]

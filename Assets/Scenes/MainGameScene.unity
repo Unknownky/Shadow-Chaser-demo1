@@ -4990,6 +4990,10 @@ PrefabInstance:
       value: SecondWindow
       objectReference: {fileID: 0}
     - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: eventTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
       propertyPath: stateDetection
       value: 1
       objectReference: {fileID: 0}

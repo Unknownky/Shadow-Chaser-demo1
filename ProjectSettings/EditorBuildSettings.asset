@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Page01_Lattice01.unity
     guid: 14b7174fadafff645a0927be30f48ddf
+  - enabled: 1
+    path: Assets/Scenes/Music/MusicScene.unity
+    guid: 3b45cbe54c0593545b399bb12c24038a
   m_configObjects: {}

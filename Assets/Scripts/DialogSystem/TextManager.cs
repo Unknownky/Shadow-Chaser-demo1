@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 /// <summary>
@@ -27,6 +28,7 @@ public class TextManager : MonoBehaviour
     /// </summary>
     public List<string> result { get; private set; }
 
+    public bool isRunning => _dialoguePanel.activeSelf;
 
     private Animator _dialoguePanelAnimator;//对话框的动画控制器
 
@@ -34,6 +36,8 @@ public class TextManager : MonoBehaviour
 
     //获取人物的图片的材质来改变其alpha值
     private Material _characterImageMaterial;
+
+    public UnityEvent dialogueEndEvent;
 
     private void Awake()
     {
@@ -139,6 +143,7 @@ public class TextManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(_fadeTime);
         //隐藏对话框
         _dialoguePanel.SetActive(false);
+        dialogueEndEvent?.Invoke();
     }
 
     private void AccordTextProduceResult(string text)

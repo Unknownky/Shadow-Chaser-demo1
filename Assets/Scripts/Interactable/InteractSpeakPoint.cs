@@ -27,6 +27,7 @@ public class InteractSpeakPoint : MonoBehaviour
 
     public int dialogueIndex = -1;
 
+
     private void Start()
     {
         if (detectionTagQueue.Count != dalogueNameQueue.Count)
@@ -51,7 +52,11 @@ public class InteractSpeakPoint : MonoBehaviour
             if (!stateDetection)
             {
                 interactInfoPop.ShowInteractInfo(dialogueName);
-                if (eventTrigger) onSpeakPointTriggered[dialogueIndex].unityEvent.Invoke();
+                if (eventTrigger)
+                {
+                    DialogDirector.Instance.InjectDialogueEndEvent(onSpeakPointTriggered[dialogueIndex].unityEvent);
+                }
+
             }
             else
             {
@@ -67,10 +72,14 @@ public class InteractSpeakPoint : MonoBehaviour
                 }
                 dialogueIndex = dialogueIndex == -1 ? 0 : dialogueIndex;
                 interactInfoPop.ShowInteractInfo(dalogueNameQueue[dialogueIndex]);
-                if (eventTrigger) onSpeakPointTriggered[dialogueIndex].unityEvent.Invoke();
+                if (eventTrigger)
+                {
+                    DialogDirector.Instance.InjectDialogueEndEvent(onSpeakPointTriggered[dialogueIndex].unityEvent);
+                }
             }
         }
     }
+
 
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -80,6 +89,7 @@ public class InteractSpeakPoint : MonoBehaviour
             interactInfoPop.HideInteractInfo();
         }
     }
+
 }
 
 
