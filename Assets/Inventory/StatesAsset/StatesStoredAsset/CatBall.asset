@@ -17,4 +17,4 @@ MonoBehaviour:
   stateSprite: {fileID: 21300000, guid: fd215db59be8fd14fac0b9ba08a3107f, type: 3}
   stateDescription: "\u8FD9\u662F\u9ED8\u8BA4\u7684\u5F71\u5B50\u72B6\u6001"
   stateID: 3
-  statePrefab: {fileID: 0}
+  statePrefab: {fileID: 2748784814626280503, guid: 69d8ca4a19359a54aa5bc5ae21cf8a96, type: 3}

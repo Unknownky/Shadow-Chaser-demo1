@@ -12,6 +12,7 @@ TagManager:
   - DragItem
   - VirtualPlatform
   - Fire
+  - CatBall
   layers:
   - Default
   - TransparentFX

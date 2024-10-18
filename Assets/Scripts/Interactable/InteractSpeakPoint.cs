@@ -13,17 +13,20 @@ public class InteractSpeakPoint : MonoBehaviour
 {
     public string dialogueName;
 
-    public bool stateDetection = false;
+    [Tooltip("是否启用状态检测")]public bool stateDetection = false;
 
-    public bool eventTrigger = false;
+    [Tooltip("是否启用额外条件检测")]public bool extraConditionDetection = false;
+    [Tooltip("是否启用状态及额外条件的事件触发")]public bool eventTrigger = false;
 
-    public List<string> detectionTagQueue = new List<string>();
+    [Tooltip("待检测的特定的状态")]public List<string> detectionTagQueue = new List<string>();
+    [Tooltip("触发事件的额外物体开闭条件")]public List<GameObjectActiveConditionWrapper> eventConditions;
 
-    public List<string> dalogueNameQueue = new List<string>();
+    [Tooltip("依次对应检测状态的对话")]public List<string> dalogueNameQueue = new List<string>();
 
     private InteractInfoPop interactInfoPop;
 
-    public List<UnityEventWrapper> onSpeakPointTriggered;
+
+    [Tooltip("依次对应检测条件的触发事件")]public List<UnityEventWrapper> onSpeakPointTriggered;
 
     public int dialogueIndex = -1;
 
@@ -51,7 +54,11 @@ public class InteractSpeakPoint : MonoBehaviour
             interactInfoPop = other.GetComponent<InteractInfoPop>();
             if (!stateDetection)
             {
-                interactInfoPop.ShowInteractInfo(dialogueName);
+                dialogueIndex = ExtraConditionDetectionIndex();
+                if(dialogueIndex != -1)
+                    interactInfoPop.ShowInteractInfo(dalogueNameQueue[dialogueIndex]);
+                else
+                    interactInfoPop.ShowInteractInfo(dialogueName);
                 if (eventTrigger)
                 {
                     DialogDirector.Instance.InjectDialogueEndEvent(onSpeakPointTriggered[dialogueIndex].unityEvent);
@@ -63,7 +70,7 @@ public class InteractSpeakPoint : MonoBehaviour
                 dialogueIndex = -1;
                 for (int i = 0; i < detectionTagQueue.Count; i++)
                 {
-                    if (GameManager.instance.StatesContainerDetect(detectionTagQueue[i]))
+                    if (GameManager.instance.StatesContainerDetect(detectionTagQueue[i])&&ExtraConditionDetection(eventConditions[i]))
                     {
                         dialogueIndex += 1;
                     }
@@ -90,6 +97,25 @@ public class InteractSpeakPoint : MonoBehaviour
         }
     }
 
+    private int ExtraConditionDetectionIndex()
+    {
+        int index = -1;
+        for (int i = 0; i < eventConditions.Count-1; i++)
+        {
+            if (ExtraConditionDetection(eventConditions[i]))
+            {
+                index = i;
+            }
+            else break;
+        }
+        return index;
+    }
+
+    private bool ExtraConditionDetection(GameObjectActiveConditionWrapper gameObjectActiveConditionWrapper)
+    {
+        return gameObjectActiveConditionWrapper.gameObject.activeSelf == gameObjectActiveConditionWrapper.activeCondition;
+    }
+
 }
 
 
@@ -97,4 +123,11 @@ public class InteractSpeakPoint : MonoBehaviour
 public class UnityEventWrapper
 {
     public UnityEvent unityEvent;
+}
+
+[Serializable]
+public class GameObjectActiveConditionWrapper
+{
+    public GameObject gameObject;
+    public bool activeCondition;
 }
