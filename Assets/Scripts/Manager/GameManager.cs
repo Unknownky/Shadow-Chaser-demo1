@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         return lightCheckTemp != GetLightCheck();
     }
 
-    
+
     public bool ComparePlayerTag(Collider2D collider2D)
     {
         bool isPlayer = false;
@@ -76,6 +76,37 @@ public class GameManager : MonoBehaviour
         return isPlayer;
     }
 
+
+    public bool StatesContainerDetect(string name)
+    {
+        if (name == null) return true;
+        foreach (var state in statesContainer.possessedStates)
+        {
+            if (state.name == name)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool StatesContainerDetect(List<string> names)
+    {
+        foreach (var name in names)
+        {
+            if (!StatesContainerDetect(name))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void LoadScene(string sceneName)
+    {
+        if (sceneName == "") return;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
 
     #endregion
     private bool GetLightCheck()

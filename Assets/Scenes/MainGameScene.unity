@@ -4989,6 +4989,110 @@ PrefabInstance:
       propertyPath: dialogueName
       value: SecondWindow
       objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: stateDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: dalogueNameQueue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: detectionTagQueue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: dalogueNameQueue.Array.data[0]
+      value: SecondWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: dalogueNameQueue.Array.data[1]
+      value: SecondWindowOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: detectionTagQueue.Array.data[0]
+      value: Umbralla
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: detectionTagQueue.Array.data[1]
+      value: Bird
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1258033709}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DialogueIndexStringParseThenLoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.Array.data[0].unityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.Array.data[0].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1258033709}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.Array.data[0].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: MusicScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316711422972150572, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
+      propertyPath: onSpeakPointTriggered.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7316711422972150573, guid: 1fb4a669863b1ac41bc6e9447057e239, type: 3}
       propertyPath: m_Size.x
       value: 0.98536825
