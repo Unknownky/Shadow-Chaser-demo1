@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour
     private List<LightInOutStateChangeController> lightCheckObjects = new List<LightInOutStateChangeController>();
     #endregion
 
+    public GameObject bagCanvasObject;
+
+    public Canvas bagCanvas;
+
+    public Camera mainCamera;
+
     private void Awake()
     {
         if (instance == null)
@@ -43,6 +49,15 @@ public class GameManager : MonoBehaviour
     {
         interactInfoObject = GameObject.Find("InteractInfoObject");
         interactInfoObject?.SetActive(false);
+        bagCanvasObject = GameObject.Find("BagCanvas");
+        bagCanvas = bagCanvasObject?.GetComponent<Canvas>();
+
+        // 获取主摄像机并设置为Canvas的render camera
+        mainCamera = GameObject.Find("MainCamera")?.GetComponent<Camera>();
+        if (bagCanvas != null && mainCamera != null)
+        {
+            bagCanvas.worldCamera = mainCamera;
+        }
     }
 
     private void HideVirtualPlatform()
