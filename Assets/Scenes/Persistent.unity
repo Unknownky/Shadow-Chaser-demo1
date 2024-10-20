@@ -550,6 +550,7 @@ MonoBehaviour:
   statesContainer: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
   interactKey: 101
   carryKey: 113
+  UmbrallaKey: 32
   interactInfoObject: {fileID: 0}
   inLight: 1
   bagCanvasObject: {fileID: 0}

@@ -19,10 +19,13 @@ public class StreamController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Umbralla"))
         {
-            rb = collision.gameObject.GetComponent<Rigidbody2D>();
-            rb.velocity = new Vector3(rb.velocity.x, streamForce, 0);
             umbrallaController = collision.gameObject.GetComponent<UmbrallaController>();
-            umbrallaController.GainRotatePower(rotatePower);
+            if (umbrallaController.isOpen)
+            {
+                rb = collision.gameObject.GetComponent<Rigidbody2D>();
+                rb.velocity = new Vector3(rb.velocity.x, streamForce, 0);
+                umbrallaController.GainRotatePower(rotatePower);
+            }
         }
     }
 }

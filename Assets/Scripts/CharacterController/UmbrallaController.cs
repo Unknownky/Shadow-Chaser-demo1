@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics;
 using UnityEngine;
 
 
@@ -29,12 +31,15 @@ public class UmbrallaController : MonoBehaviour, IStateController
 
     [SerializeField] private float usingPowerRate = 0.02f;
 
+    [SerializeField] public bool isOpen = false;
+
     //世界坐标朝向右
-    private Vector3 rightRotation= new Vector3(0, 0, 90);
+    private Vector3 rightRotation = new Vector3(0, 0, 90);
 
-    private Vector3 leftRotation =  new Vector3(0, 0, 90);
+    private Vector3 leftRotation = new Vector3(0, 0, 90);
 
-    public float RotatePower{
+    public float RotatePower
+    {
         get => rotatePower;
         private set => rotatePower = value;
     }
@@ -56,6 +61,22 @@ public class UmbrallaController : MonoBehaviour, IStateController
         Movement(); //移动
         Flip();     //翻转
         Rotate();   //旋转
+        Switch();   //切换
+    }
+
+    private void Switch()
+    {
+        if (Input.GetKeyDown(GameManager.instance.UmbrallaKey))
+        {
+            if (isOpen)
+            {
+                isOpen = false;
+            }
+            else
+            {
+                isOpen = true;
+            }
+        }
     }
 
     private void Rotate()
@@ -99,11 +120,19 @@ public class UmbrallaController : MonoBehaviour, IStateController
     private void FixedUpdate()
     {
         PhysicalUpdate();
+        AnimatorUpdate();
     }
 
     public void AnimatorUpdate()
     {
-        return;
+        if (isOpen)
+        {
+            _animator.Play("OpenUmbralla");
+        }
+        else
+        {
+            _animator.Play("CloseUmbralla");
+        }
     }
 
 
@@ -136,18 +165,18 @@ public class UmbrallaController : MonoBehaviour, IStateController
 
     public void WindPowerEffect(string direction)
     {
-        if(RotatePower <= 0)
+        if (RotatePower <= 0)
         {
             windPowerEffectObject.SetActive(false);
             return;
         }
         UseRotatePower();
         windPowerEffectObject.SetActive(true);
-        if(direction == "left")
+        if (direction == "left")
         {
             windPowerEffectObject.transform.rotation = Quaternion.Euler(leftRotation);
         }
-        else if(direction == "right")
+        else if (direction == "right")
         {
             windPowerEffectObject.transform.rotation = Quaternion.Euler(rightRotation);
         }
@@ -156,5 +185,8 @@ public class UmbrallaController : MonoBehaviour, IStateController
     public void InitParameters()
     {
         windPowerEffectObject = transform.GetChild(1).gameObject;
+        playerBody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        isOpen = true;
     }
 }

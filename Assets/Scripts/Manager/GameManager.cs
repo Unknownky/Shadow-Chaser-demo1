@@ -9,9 +9,12 @@ public class GameManager : MonoBehaviour
 
     public StatesContainer statesContainer;
 
+    [Header("热键绑定")]
     public KeyCode interactKey = KeyCode.E;
 
     public KeyCode carryKey = KeyCode.Q;
+
+    public KeyCode UmbrallaKey = KeyCode.Space;
 
     #region ParameterForDialogSystem
     public GameObject interactInfoObject;
