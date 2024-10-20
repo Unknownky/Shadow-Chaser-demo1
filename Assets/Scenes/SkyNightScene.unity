@@ -381,6 +381,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 745621268251903465, guid: b32bc39b3f6c9c54bbfdcf22b8a14d97, type: 3}
+      propertyPath: detectTag
+      value: Umbralla
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b32bc39b3f6c9c54bbfdcf22b8a14d97, type: 3}
 --- !u!1 &736897950
@@ -449,7 +453,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 736897950}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -603,6 +607,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 745621268251903465, guid: b32bc39b3f6c9c54bbfdcf22b8a14d97, type: 3}
+      propertyPath: detectTag
+      value: Umbralla
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b32bc39b3f6c9c54bbfdcf22b8a14d97, type: 3}
 --- !u!1 &959197732
@@ -645,7 +653,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959197732}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -767,7 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4261433, g: 1, b: 0.4188679, a: 0.39215687}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
@@ -792,6 +800,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960071756}
   m_CullTransparentMesh: 1
+--- !u!1 &996102722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 755158770414096661, guid: 90e791845078dc24394d7277ef45274f, type: 3}
+  m_PrefabInstance: {fileID: 322249779}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &996102726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996102722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09277b367eecf564b8036467adbc26c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  streamForce: 10
+  rotatePower: 0.02
+  umbrallaController: {fileID: 0}
+  detectTag: Enemy
 --- !u!1 &1108968107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1056,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150445146}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

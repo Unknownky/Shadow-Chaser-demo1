@@ -13,11 +13,13 @@ public class StreamController : MonoBehaviour
 
     public UmbrallaController umbrallaController;
 
+    public string detectTag = "Umbralla";
+
     private Rigidbody2D rb;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Umbralla"))
+        if (collision.gameObject.CompareTag(detectTag))
         {
             umbrallaController = collision.gameObject.GetComponent<UmbrallaController>();
             if (umbrallaController.isOpen)
