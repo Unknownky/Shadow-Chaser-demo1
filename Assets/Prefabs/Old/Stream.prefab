@@ -145,6 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09277b367eecf564b8036467adbc26c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamForce: 2
+  streamForce: 10
   rotatePower: 0.02
   umbrallaController: {fileID: 0}

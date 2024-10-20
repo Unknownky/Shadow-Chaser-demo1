@@ -23,7 +23,9 @@ public class StreamController : MonoBehaviour
             if (umbrallaController.isOpen)
             {
                 rb = collision.gameObject.GetComponent<Rigidbody2D>();
-                rb.velocity = new Vector3(rb.velocity.x, streamForce, 0);
+                // rb.velocity = new Vector3(rb.velocity.x, streamForce, 0);
+                //给雨伞施加一个当前Stream对应方向的力量
+                rb.AddForce(transform.up * streamForce);
                 umbrallaController.GainRotatePower(rotatePower);
             }
         }

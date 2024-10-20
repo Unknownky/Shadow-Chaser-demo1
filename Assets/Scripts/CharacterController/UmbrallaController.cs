@@ -38,14 +38,9 @@ public class UmbrallaController : MonoBehaviour, IStateController
 
     private Vector3 leftRotation = new Vector3(0, 0, 90);
 
-    public float RotatePower
-    {
-        get => rotatePower;
-        private set => rotatePower = value;
-    }
+    public float RotatePower;
 
-    private float rotatePower = 0f;
-
+    public float maxRotatePower = 2f;
 
     private float horizontal;
     private bool isFacingRight;
@@ -150,16 +145,28 @@ public class UmbrallaController : MonoBehaviour, IStateController
 
     public void PhysicalUpdate()
     {
-        playerBody2D.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
+        if (playerBody2D.velocity.magnitude < speed)
+        {
+            playerBody2D.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime * backGroundScale, playerBody2D.velocity.y);
+
+        }
     }
 
     public void GainRotatePower(float power)
     {
+        if (RotatePower >= maxRotatePower)
+        {
+            return;
+        }
         RotatePower += power;
     }
 
     public void UseRotatePower()
     {
+        if(RotatePower <= 0)
+        {
+            return;
+        }
         RotatePower -= usingPowerRate;
     }
 
