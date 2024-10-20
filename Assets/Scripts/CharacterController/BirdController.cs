@@ -85,6 +85,10 @@ public class BirdController : MonoBehaviour, IStateController
     {
         GameObject Canvas = GameObject.Find("BagCanvas");
         statesContainer = Canvas.transform.GetChild(0).gameObject;
+        playerBody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        groundCheck = transform.Find("GroundCheck");
+        groundLayer = LayerMask.GetMask("Ground");
     }
 
     private void FixedUpdate()

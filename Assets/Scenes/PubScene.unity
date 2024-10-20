@@ -7024,6 +7024,7 @@ MonoBehaviour:
   statesContainer: {fileID: 11400000, guid: 7a64f81c2b86f9e4a811dc96cf357875, type: 2}
   interactKey: 101
   carryKey: 113
+  UmbrallaKey: 32
   interactInfoObject: {fileID: 0}
   inLight: 1
   bagCanvasObject: {fileID: 0}
@@ -8013,6 +8014,10 @@ PrefabInstance:
     - target: {fileID: 745621268251903253, guid: b32bc39b3f6c9c54bbfdcf22b8a14d97, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 745621268251903465, guid: b32bc39b3f6c9c54bbfdcf22b8a14d97, type: 3}
+      propertyPath: detectTag
+      value: Umbralla
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b32bc39b3f6c9c54bbfdcf22b8a14d97, type: 3}
@@ -9208,6 +9213,10 @@ PrefabInstance:
     - target: {fileID: 745621268251903253, guid: b32bc39b3f6c9c54bbfdcf22b8a14d97, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 745621268251903465, guid: b32bc39b3f6c9c54bbfdcf22b8a14d97, type: 3}
+      propertyPath: detectTag
+      value: Umbralla
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b32bc39b3f6c9c54bbfdcf22b8a14d97, type: 3}
@@ -11288,7 +11297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7824626643100995726, guid: 10066476c48873043aee194d43cff60d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.001
+      value: 3.011
       objectReference: {fileID: 0}
     - target: {fileID: 7824626643100995726, guid: 10066476c48873043aee194d43cff60d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11327,8 +11336,16 @@ PrefabInstance:
       value: EnterSwitchCamera
       objectReference: {fileID: 0}
     - target: {fileID: 7824626643100995728, guid: 10066476c48873043aee194d43cff60d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.3403682
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824626643100995728, guid: 10066476c48873043aee194d43cff60d, type: 3}
       propertyPath: m_Size.y
       value: 0.03051591
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824626643100995728, guid: 10066476c48873043aee194d43cff60d, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.035613924
       objectReference: {fileID: 0}
     - target: {fileID: 7824626643100995728, guid: 10066476c48873043aee194d43cff60d, type: 3}
       propertyPath: m_Offset.y
