@@ -94,6 +94,20 @@ public class GameManager : MonoBehaviour
         return isPlayer;
     }
 
+    public bool ComparePlayerTag(Collision2D collision2D)
+    {
+        bool isPlayer = false;
+        foreach (var tag in statesContainer.possessedStates.Select(state => state.name))
+        {
+            if (collision2D.collider.CompareTag(tag))
+            {
+                isPlayer = true;
+                break;
+            }
+        }
+        return isPlayer;
+    }
+
 
     public bool StatesContainerDetect(string name)
     {
@@ -125,6 +139,13 @@ public class GameManager : MonoBehaviour
         if (sceneName == "") return;
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
+
+    public static void ReLoadScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        Logger.Log("Reload Scene");
+    }   
+
 
     #endregion
     private bool GetLightCheck()

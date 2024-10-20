@@ -15,6 +15,7 @@ MonoBehaviour:
   possessedStates:
   - {fileID: 11400000, guid: 26889207b3b72bf4ea8bcdb70f9696c3, type: 2}
   - {fileID: 11400000, guid: 4c6bf2e95c1239f449ed0ed4e0780c5c, type: 2}
+  - {fileID: 11400000, guid: 7aa081106906b1a45839f429d2f4e4f4, type: 2}
   outWillChangeStateID: 0
   currentStateID: 0
   defaultOutChangeStateID: 3
