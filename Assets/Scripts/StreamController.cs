@@ -21,14 +21,22 @@ public class StreamController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(detectTag))
         {
-            umbrallaController = collision.gameObject.GetComponent<UmbrallaController>();
-            if (umbrallaController.isOpen)
+            if (detectTag == "Umbralla")
             {
-                rb = collision.gameObject.GetComponent<Rigidbody2D>();
-                // rb.velocity = new Vector3(rb.velocity.x, streamForce, 0);
-                //给雨伞施加一个当前Stream对应方向的力量
-                rb.AddForce(transform.up * streamForce);
-                umbrallaController.GainRotatePower(rotatePower);
+                umbrallaController = collision.gameObject.GetComponent<UmbrallaController>();
+                if (umbrallaController.isOpen)
+                {
+                    rb = collision.gameObject.GetComponent<Rigidbody2D>();
+                    // rb.velocity = new Vector3(rb.velocity.x, streamForce, 0);
+                    //给雨伞施加一个当前Stream对应方向的力量
+                    rb.AddForce(transform.up * streamForce);
+                    umbrallaController.GainRotatePower(rotatePower);
+                }
+            }
+            else
+            {
+                collision.gameObject.TryGetComponent<Rigidbody2D>(out rb);
+                rb?.AddForce(transform.up * streamForce);
             }
         }
     }

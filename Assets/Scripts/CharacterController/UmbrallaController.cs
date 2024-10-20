@@ -34,7 +34,7 @@ public class UmbrallaController : MonoBehaviour, IStateController
     [SerializeField] public bool isOpen = false;
 
     //世界坐标朝向右
-    private Vector3 rightRotation = new Vector3(0, 0, 90);
+    private Vector3 rightRotation = new Vector3(0, 0, -90);
 
     private Vector3 leftRotation = new Vector3(0, 0, 90);
 
@@ -76,14 +76,14 @@ public class UmbrallaController : MonoBehaviour, IStateController
 
     private void Rotate()
     {
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetMouseButton(0))
         {
             transform.Rotate(Vector3.down * rotateRate);
             UseRotatePower();
             WindPowerEffect("left");
 
         }
-        else if (Input.GetKey(KeyCode.E))
+        else if (Input.GetMouseButton(1))
         {
             transform.Rotate(Vector3.up * rotateRate);
             UseRotatePower();

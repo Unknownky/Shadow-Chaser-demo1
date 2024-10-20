@@ -13,6 +13,8 @@ TagManager:
   - VirtualPlatform
   - Fire
   - CatBall
+  - Cloud
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -25,7 +27,7 @@ TagManager:
   - Player
   - Light
   - carryObject
-  - 
+  - Cloud
   - 
   - 
   - 
