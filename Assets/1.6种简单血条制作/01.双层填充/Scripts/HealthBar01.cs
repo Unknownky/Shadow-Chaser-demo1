@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 namespace QFramework.Mofelor
 {
 	public partial class HealthBar01 : ViewController
@@ -55,5 +57,21 @@ namespace QFramework.Mofelor
 
 			TextShow.text = Health.ToString()+"/"+MaxHealth.ToString()+" ";
 		}
+
+        public void AddHealth(float value)
+        {
+            Health.Value += value;
+        }
+
+        public void ReduceHealth(float value)
+        {
+            Health.Value -= value;
+        }
+
+        public void SetHealth(float value)
+        {
+            Mathf.Clamp(value, 0, MaxHealth);
+            Health.Value = value;
+        }
 	}
 }

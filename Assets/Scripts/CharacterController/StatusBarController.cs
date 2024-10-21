@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine.Utility;
+using QFramework.Mofelor;
 using UnityEngine;
 
 public class StatusBarController : MonoBehaviour
@@ -15,14 +17,24 @@ public class StatusBarController : MonoBehaviour
 
     private void Update() {
         if(healthBarObject.activeSelf){
-            healthBarObject.transform.localScale = transform.localScale;
+            healthBarObject.transform.localScale = transform.localScale.Abs();
             //偏移一点
             healthBarObject.transform.position = transform.position + healthBarOffset;
         }
         if(powerBarObject.activeSelf){
-            powerBarObject.transform.localScale = transform.localScale;
+            powerBarObject.transform.localScale = transform.localScale.Abs();
             //偏移一点
             powerBarObject.transform.position = transform.position + powerBarOffset;
         }
+    }
+
+    public void SetHealthBar(float value)
+    {
+        healthBarObject.GetComponent<HealthBar01>().SetHealth(value);
+    }
+
+    public void SetPowerBar(float value)
+    {
+        powerBarObject.GetComponent<HealthBar01>().SetHealth(value);
     }
 }

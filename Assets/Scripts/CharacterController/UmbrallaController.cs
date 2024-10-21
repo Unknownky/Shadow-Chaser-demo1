@@ -38,13 +38,16 @@ public class UmbrallaController : MonoBehaviour, IStateController
 
     private Vector3 leftRotation = new Vector3(0, 0, 90);
 
-    public float RotatePower;
+    [Tooltip("旋转能量")]public float RotatePower;
 
-    public float maxRotatePower = 2f;
+    [Tooltip("生命值")] public float health;
+
+    [Tooltip("最大旋转能量")]public float maxRotatePower = 2f;
 
     private float horizontal;
     private bool isFacingRight;
 
+    private StatusBarController statusBarController;
 
     private void OnEnable()
     {
@@ -57,6 +60,13 @@ public class UmbrallaController : MonoBehaviour, IStateController
         Flip();     //翻转
         Rotate();   //旋转
         Switch();   //切换
+        SetStatusBar(); //设置状态栏
+    }
+
+    private void SetStatusBar()
+    {
+        statusBarController.SetHealthBar(health);
+        statusBarController.SetPowerBar(RotatePower/maxRotatePower * 100);
     }
 
     private void Switch()
@@ -195,5 +205,8 @@ public class UmbrallaController : MonoBehaviour, IStateController
         playerBody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         isOpen = true;
+        RotatePower = 0;
+        health = 100;
+        statusBarController = GetComponent<StatusBarController>();
     }
 }
