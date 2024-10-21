@@ -7029,8 +7029,11 @@ MonoBehaviour:
   inLight: 1
   bagCanvasObject: {fileID: 0}
   healthBarObject: {fileID: 0}
+  powerBarObject: {fileID: 0}
   bagCanvas: {fileID: 0}
   mainCamera: {fileID: 0}
+  sceneNamesForStatusBar:
+  - SkyNightScene
 --- !u!114 &1258033710
 MonoBehaviour:
   m_ObjectHideFlags: 0

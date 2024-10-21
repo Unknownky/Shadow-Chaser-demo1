@@ -200,10 +200,6 @@ PrefabInstance:
       propertyPath: m_SleepingMode
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 672902715071357218, guid: 90e791845078dc24394d7277ef45274f, type: 3}
-      propertyPath: maxSpeed
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 672902715071357228, guid: 90e791845078dc24394d7277ef45274f, type: 3}
       propertyPath: m_RootOrder
       value: 5

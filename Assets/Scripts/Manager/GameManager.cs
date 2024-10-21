@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
 
     public Camera mainCamera;
 
+    public List<String> sceneNamesForStatusBar;
+
     private void Awake()
     {
         if (instance == null)
@@ -68,6 +70,7 @@ public class GameManager : MonoBehaviour
     {
         //场景加载完成后重新初始化摄像机参数
         InitCameraParameters();
+        InitStatusBarParameters();
     }
 
     private void InitCameraParameters()
@@ -84,6 +87,31 @@ public class GameManager : MonoBehaviour
     {
         healthBarObject = GameObject.Find("HealthBar");
         powerBarObject = GameObject.Find("PowerBar");
+        if (healthBarObject != null && powerBarObject != null)
+        {
+            if(SceneNamesForStatusBarDetect(SceneManager.GetActiveScene().name))
+            {
+                healthBarObject.SetActive(true);
+                powerBarObject.SetActive(true);
+            }
+            else
+            {
+                healthBarObject.SetActive(false);
+                powerBarObject.SetActive(false);
+            }
+        }
+    }
+
+    private bool SceneNamesForStatusBarDetect(string name)
+    {
+        foreach (var sceneName in sceneNamesForStatusBar)
+        {
+            if (sceneName == name)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void InitDialogSystemParameters()

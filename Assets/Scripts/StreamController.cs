@@ -38,7 +38,7 @@ public class StreamController : MonoBehaviour
                 collision.gameObject.TryGetComponent<Rigidbody2D>(out rb);
                 rb?.AddForce(transform.up * streamForce);
             }
-            Logger.Log("AddForce to " + collision.gameObject.name);
+            // Logger.Log("AddForce to " + collision.gameObject.name);
 
         }
     }
