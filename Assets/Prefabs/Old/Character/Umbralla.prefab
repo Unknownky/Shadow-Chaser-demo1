@@ -136,11 +136,13 @@ MonoBehaviour:
   statesContainer: {fileID: 895929039764890312, guid: 990969b0e3fd23b40871660b1c82c7e0, type: 3}
   force: 0.5
   speed: 8
+  maxSpeed: 20
   backGroundScale: 4.44
   rotateRate: 2
   usingPowerRate: 0.002
   isOpen: 0
   RotatePower: 0
+  health: 0
   maxRotatePower: 2
 --- !u!95 &672902715071357216
 Animator:
@@ -205,6 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBarOffset: {x: 0, y: -0.5, z: 0}
+  powerBarOffset: {x: 0, y: -0.5, z: 0}
 --- !u!1 &672902715671832818
 GameObject:
   m_ObjectHideFlags: 0

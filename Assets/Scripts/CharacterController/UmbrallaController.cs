@@ -25,6 +25,8 @@ public class UmbrallaController : MonoBehaviour, IStateController
     [Header("PlayerAttributes")]
     [SerializeField] private float force;
     [SerializeField] private float speed;
+
+    [SerializeField] private float maxSpeed;
     [SerializeField] private float backGroundScale;
 
     [SerializeField] private float rotateRate = 2f;
@@ -38,11 +40,11 @@ public class UmbrallaController : MonoBehaviour, IStateController
 
     private Vector3 leftRotation = new Vector3(0, 0, 90);
 
-    [Tooltip("旋转能量")]public float RotatePower;
+    [Tooltip("旋转能量")] public float RotatePower;
 
     [Tooltip("生命值")] public float health;
 
-    [Tooltip("最大旋转能量")]public float maxRotatePower = 2f;
+    [Tooltip("最大旋转能量")] public float maxRotatePower = 2f;
 
     private float horizontal;
     private bool isFacingRight;
@@ -61,12 +63,26 @@ public class UmbrallaController : MonoBehaviour, IStateController
         Rotate();   //旋转
         Switch();   //切换
         SetStatusBar(); //设置状态栏
+        LimitRbVelocity(); //限制速度
+    }
+
+    private void LimitRbVelocity()
+    {
+        // 限制刚体的速度
+        if (playerBody2D != null)
+        {
+            Vector2 velocity = playerBody2D.velocity;
+            if (velocity.magnitude > maxSpeed)
+            {
+                playerBody2D.velocity = velocity.normalized * maxSpeed;
+            }
+        }
     }
 
     private void SetStatusBar()
     {
         statusBarController.SetHealthBar(health);
-        statusBarController.SetPowerBar(RotatePower/maxRotatePower * 100);
+        statusBarController.SetPowerBar(RotatePower / maxRotatePower * 100);
     }
 
     private void Switch()
@@ -173,7 +189,7 @@ public class UmbrallaController : MonoBehaviour, IStateController
 
     public void UseRotatePower()
     {
-        if(RotatePower <= 0)
+        if (RotatePower <= 0)
         {
             return;
         }
