@@ -28,6 +28,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject bagCanvasObject;
 
+    public GameObject healthBarObject;
+
+    public GameObject powerBarObject;
+
     public Canvas bagCanvas;
 
     public Camera mainCamera;
@@ -54,6 +58,8 @@ public class GameManager : MonoBehaviour
         interactInfoObject?.SetActive(false);
         bagCanvasObject = GameObject.Find("BagCanvas");
         bagCanvas = bagCanvasObject?.GetComponent<Canvas>();
+        healthBarObject = GameObject.Find("HealthBar");
+        powerBarObject = GameObject.Find("PowerBar");
 
         // 获取主摄像机并设置为Canvas的render camera
         mainCamera = GameObject.Find("MainCamera")?.GetComponent<Camera>();
