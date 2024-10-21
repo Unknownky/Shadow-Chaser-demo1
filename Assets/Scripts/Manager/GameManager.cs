@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -49,7 +51,39 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        // 订阅场景加载完成事件
+        SceneManager.sceneLoaded += OnSceneLoaded;
         InitDialogSystemParameters();
+        InitStatusBarParameters();
+        InitCameraParameters();
+    }
+
+    void OnDestroy()
+    {
+        // 取消订阅场景加载完成事件
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        //场景加载完成后重新初始化摄像机参数
+        InitCameraParameters();
+    }
+
+    private void InitCameraParameters()
+    {
+        // 获取主摄像机并设置为Canvas的render camera
+        mainCamera = GameObject.Find("MainCamera")?.GetComponent<Camera>();
+        if (bagCanvas != null && mainCamera != null)
+        {
+            bagCanvas.worldCamera = mainCamera;
+        }
+    }
+
+    private void InitStatusBarParameters()
+    {
+        healthBarObject = GameObject.Find("HealthBar");
+        powerBarObject = GameObject.Find("PowerBar");
     }
 
     private void InitDialogSystemParameters()
@@ -58,15 +92,7 @@ public class GameManager : MonoBehaviour
         interactInfoObject?.SetActive(false);
         bagCanvasObject = GameObject.Find("BagCanvas");
         bagCanvas = bagCanvasObject?.GetComponent<Canvas>();
-        healthBarObject = GameObject.Find("HealthBar");
-        powerBarObject = GameObject.Find("PowerBar");
 
-        // 获取主摄像机并设置为Canvas的render camera
-        mainCamera = GameObject.Find("MainCamera")?.GetComponent<Camera>();
-        if (bagCanvas != null && mainCamera != null)
-        {
-            bagCanvas.worldCamera = mainCamera;
-        }
     }
 
     private void HideVirtualPlatform()
@@ -143,14 +169,14 @@ public class GameManager : MonoBehaviour
     public static void LoadScene(string sceneName)
     {
         if (sceneName == "") return;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 
     public static void ReLoadScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Logger.Log("Reload Scene");
-    }   
+    }
 
 
     #endregion
